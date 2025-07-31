@@ -91,7 +91,7 @@ const Rooms = () => {
         weekly: "₱7,500",
         biweekly: "₱15,000",
         threeWeeks: "₱22,500",
-        monthly: "₱29,000"
+        monthly: "₱28,000"
       },
       available: "August 7th",
       isPopular: false,

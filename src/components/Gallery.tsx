@@ -61,10 +61,58 @@ const Gallery = () => {
       title: "Traditional Bamboo Entrance",
       category: "Architecture",
       description: "Authentic Filipino bamboo construction with thatched roofing"
+    },
+    {
+      src: "/lovable-uploads/1ded5ba3-f55f-4eca-ae67-d465beaffb21.png",
+      title: "Gravel Access Path",
+      category: "Exterior",
+      description: "Private entrance path through tropical landscape"
+    },
+    {
+      src: "/lovable-uploads/921e3861-a745-4e7a-bf07-ead82a89490b.png",
+      title: "Covered Walkway",
+      category: "Architecture",
+      description: "Traditional Filipino architecture with woven bamboo ceiling and jungle views"
+    },
+    {
+      src: "/lovable-uploads/1ebb565c-a304-49fa-893e-85dc219c6788.png",
+      title: "Secure Entrance Gate",
+      category: "Exterior",
+      description: "Traditional gate with CCTV security system and thatched roofing"
+    },
+    {
+      src: "/lovable-uploads/b5ba0685-11ca-4d09-be1d-5415e33d66fe.png",
+      title: "Hammock Paradise",
+      category: "Common Spaces",
+      description: "Relax in hammocks surrounded by tropical plants and authentic architecture"
+    },
+    {
+      src: "/lovable-uploads/4f716d81-9f51-4756-bc5d-4b63335d8b47.png",
+      title: "Garden Views",
+      category: "Exterior",
+      description: "Lush tropical garden with native plants and palm trees"
+    },
+    {
+      src: "/lovable-uploads/f2b08f2b-ddd7-4fd8-ae9c-5d9a328418f4.png",
+      title: "Outdoor Common Area",
+      category: "Common Spaces",
+      description: "Wooden benches under traditional thatched roof - perfect for socializing"
+    },
+    {
+      src: "/lovable-uploads/5c657536-0c6a-45fe-82c9-c3dd37af1b6b.png",
+      title: "Indoor Dining Space",
+      category: "Common Spaces",
+      description: "Spacious dining area with wooden furniture and modern ceiling fans"
+    },
+    {
+      src: "/lovable-uploads/26a3f37c-c09b-4051-b6b9-2da2c9866038.png",
+      title: "Interior Common Area",
+      category: "Common Spaces",
+      description: "Well-organized common space with storage and bathroom access"
     }
   ];
 
-  const categories = ["All", "Bedrooms", "Common Spaces", "Amenities", "Bathrooms", "Architecture"];
+  const categories = ["All", "Bedrooms", "Common Spaces", "Amenities", "Bathrooms", "Architecture", "Exterior"];
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const filteredImages = selectedCategory === "All" 

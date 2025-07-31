@@ -251,7 +251,7 @@ const Location = () => {
               Getting Around Siargao
             </h4>
             <p className="text-muted-foreground">
-              Motorbike rentals available nearby (₱500-800/day). Tricycles and habal-habal readily available for convenient transportation to all island destinations.
+              Motorbike rentals available nearby (₱200-800/day). Tricycles readily available for convenient transportation to all island destinations.
             </p>
           </div>
         </div>

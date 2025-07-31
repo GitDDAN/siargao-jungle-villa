@@ -83,7 +83,7 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg"
-              className="border-white text-white hover:bg-white hover:text-tropical-green backdrop-blur-sm text-lg px-8 py-4"
+              className="border-white text-white hover:bg-white hover:text-black backdrop-blur-sm text-lg px-8 py-4"
               onClick={() => scrollToSection('rooms')}
             >
               View Rooms & Pricing

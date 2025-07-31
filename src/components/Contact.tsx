@@ -96,9 +96,9 @@ Looking forward to hearing from you!`;
     {
       icon: <Instagram className="w-6 h-6" />,
       title: "Instagram",
-      value: "@alisaaaaa.j",
+      value: "@alisaaaa.j",
       description: "Follow for updates & photos",
-      action: () => window.open('https://instagram.com/alisaaaaa.j', '_blank'),
+      action: () => window.open('https://instagram.com/alisaaaa.j', '_blank'),
       primary: false
     }
   ];

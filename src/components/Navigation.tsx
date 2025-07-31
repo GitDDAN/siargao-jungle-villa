@@ -112,10 +112,10 @@ const Navigation = () => {
                   <Button 
                     variant="outline" 
                     className="w-full"
-                    onClick={() => window.open('https://instagram.com/alisaaaaa.j', '_blank')}
+                    onClick={() => window.open('https://instagram.com/alisaaaa.j', '_blank')}
                   >
                     <Instagram className="w-4 h-4 mr-2" />
-                    @alisaaaaa.j
+                    @alisaaaa.j
                   </Button>
                 </div>
               </div>

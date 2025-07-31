@@ -134,11 +134,11 @@ const Footer = () => {
               
               <Button 
                 variant="outline"
-                className="w-full border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-primary"
-                onClick={() => window.open('https://instagram.com/alisaaaaa.j', '_blank')}
+                className="w-full border-tropical-green text-tropical-green hover:bg-tropical-green hover:text-white"
+                onClick={() => window.open('https://instagram.com/alisaaaa.j', '_blank')}
               >
                 <Instagram className="w-4 h-4 mr-2" />
-                @alisaaaaa.j
+                @alisaaaa.j
               </Button>
             </div>
 

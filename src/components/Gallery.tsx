@@ -109,6 +109,42 @@ const Gallery = () => {
       title: "Interior Common Area",
       category: "Common Spaces",
       description: "Well-organized common space with storage and bathroom access"
+    },
+    {
+      src: "/lovable-uploads/2bafcf0c-8134-4a42-957c-ed899552c935.png",
+      title: "Master Ensuite Bathroom",
+      category: "Bathrooms",
+      description: "Private bathroom with modern fixtures, concrete design, and excellent lighting"
+    },
+    {
+      src: "/lovable-uploads/cb48cf65-05f7-452c-9969-05e7c527e62d.png",
+      title: "Master Room Private Balcony",
+      category: "Bedrooms",
+      description: "Exclusive balcony with traditional bamboo ceiling and direct jungle views"
+    },
+    {
+      src: "/lovable-uploads/8897ba46-4d01-419c-9f3d-91a11338672e.png",
+      title: "Master Room Workspace",
+      category: "Bedrooms",
+      description: "Dedicated work desk with natural lighting and comfortable seating"
+    },
+    {
+      src: "/lovable-uploads/95a8fd83-4039-4385-8acb-b3a404901043.png",
+      title: "Master Room Balcony Access",
+      category: "Bedrooms",
+      description: "Master bedroom with direct access to private balcony and jungle views"
+    },
+    {
+      src: "/lovable-uploads/821784fc-6b6d-46e9-a51e-26ad2ad93522.png",
+      title: "Master Room with Air Conditioning",
+      category: "Bedrooms",
+      description: "Comfortable master bedroom with AC, wooden furnishings, and balcony access"
+    },
+    {
+      src: "/lovable-uploads/8bbdbcb9-e10f-4a92-9d49-fc6875d5fd6a.png",
+      title: "Master Ensuite Hot Shower",
+      category: "Bathrooms",
+      description: "Private hot water shower with modern water heater in the ensuite bathroom"
     }
   ];
 

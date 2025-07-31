@@ -56,7 +56,7 @@ const Contact = () => {
       status: "available"
     },
     "Cozy Room": {
-      price: 29000,
+      price: 28000,
       priceNightly: 1000,
       availableFrom: "2025-08-15",
       features: ["AC", "Workspace", "Shared bathroom", "Cozy atmosphere"],

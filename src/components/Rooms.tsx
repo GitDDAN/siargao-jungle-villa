@@ -157,76 +157,78 @@ const Rooms = () => {
     return null;
   };
 
-  const getBookingMessage = (room, period) => {
-    const currentPeriod = pricingPeriods.find(p => p.key === period);
-    return `Hi Ali! I'm a digital nomad interested in the ${room.title} for a ${currentPeriod?.label.toLowerCase()} stay starting ${room.available}. I need reliable WiFi for remote work. Can you confirm availability and send more photos?`;
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
-    <section id="rooms" className="py-20 bg-gradient-hero">
+    <section id="rooms" className="py-20 bg-gradient-to-br from-blue-50 to-green-50">
       <div className="container mx-auto px-4">
         {/* Section Header - More Persuasive */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Your Remote Work Paradise
-            <span className="text-tropical-green block">in Siargao Awaits</span>
+            <span className="text-green-600 block">in Siargao Awaits</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
             Join 75% digital nomads who choose Salamat Villa for the perfect blend of productivity and paradise. 
             Every room designed with dedicated workspace, reliable 100+ Mbps WiFi, and that sweet spot location—close to Cloud 9 surf, away from party noise.
           </p>
           
           {/* Trust Indicators */}
           <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto mb-8">
-            <div className="bg-tropical-green/10 border border-tropical-green/20 rounded-lg p-4">
+            <div className="bg-green-100 border border-green-200 rounded-lg p-4">
               <div className="flex items-center justify-center mb-2">
-                <Star className="w-5 h-5 text-tropical-green mr-2" />
-                <span className="font-bold text-tropical-green">4.9/5 Rating</span>
+                <Star className="w-5 h-5 text-green-600 mr-2" />
+                <span className="font-bold text-green-600">4.9/5 Rating</span>
               </div>
-              <p className="text-sm text-muted-foreground">97% guest satisfaction</p>
+              <p className="text-sm text-gray-600">97% guest satisfaction</p>
             </div>
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
               <div className="flex items-center justify-center mb-2">
                 <TrendingUp className="w-5 h-5 text-blue-600 mr-2" />
                 <span className="font-bold text-blue-600">70% Extend Stay</span>
               </div>
-              <p className="text-sm text-muted-foreground">The "Siargao Effect" is real</p>
+              <p className="text-sm text-gray-600">The "Siargao Effect" is real</p>
             </div>
-            <div className="bg-sunrise/10 border border-sunrise/20 rounded-lg p-4">
+            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
               <div className="flex items-center justify-center mb-2">
                 <Users className="w-5 h-5 text-orange-600 mr-2" />
                 <span className="font-bold text-orange-600">Fast Response</span>
               </div>
-              <p className="text-sm text-muted-foreground">Write anytime</p>
+              <p className="text-sm text-gray-600">Write anytime</p>
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-tropical-green/10 to-blue-50 border border-tropical-green/20 rounded-xl p-6 max-w-2xl mx-auto">
-            <p className="text-foreground font-semibold mb-2">
+          <div className="bg-gradient-to-r from-green-100 to-blue-50 border border-green-200 rounded-xl p-6 max-w-2xl mx-auto">
+            <p className="text-gray-900 font-semibold mb-2">
               🔥 August-September 2025: Peak Surfing Season, Shoulder Season Prices
             </p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-gray-600">
               Book now for optimal waves without peak crowds. Digital nomads book 2-6 weeks ahead for best rooms.
             </p>
           </div>
         </div>
 
         {/* Pricing Period Selector - Enhanced */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12 animate-fade-in">
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
           {pricingPeriods.map((period) => (
             <Button
               key={period.key}
               variant={selectedPeriod === period.key ? "default" : "outline"}
               className={`transition-all duration-200 relative ${
                 selectedPeriod === period.key 
-                  ? "bg-tropical-green hover:bg-accent text-white" 
-                  : "border-tropical-green text-tropical-green hover:bg-tropical-green hover:text-white"
+                  ? "bg-green-600 hover:bg-green-700 text-white" 
+                  : "border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
               }`}
               onClick={() => setSelectedPeriod(period.key)}
             >
               {period.label}
               {period.discount && (
-                <Badge className="ml-2 bg-sunrise text-white text-xs">
+                <Badge className="ml-2 bg-orange-500 text-white text-xs">
                   {period.discount}
                 </Badge>
               )}
@@ -243,13 +245,12 @@ const Rooms = () => {
             return (
               <Card 
                 key={room.id} 
-                className={`relative overflow-hidden shadow-warm hover:shadow-tropical transition-all duration-300 transform hover:-translate-y-2 animate-fade-in ${
-                  room.isPopular ? 'border-tropical-green border-2' : ''
+                className={`relative overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 ${
+                  room.isPopular ? 'border-green-600 border-2' : ''
                 }`}
-                style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {room.isPopular && (
-                  <Badge className="absolute top-4 right-4 z-10 bg-tropical-green text-white border-none">
+                  <Badge className="absolute top-4 right-4 z-10 bg-green-600 text-white border-none">
                     ⭐ Most Popular
                   </Badge>
                 )}
@@ -264,7 +265,7 @@ const Rooms = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   
                   {/* Available Badge */}
-                  <Badge className="absolute bottom-4 left-4 bg-sunrise text-white border-none">
+                  <Badge className="absolute bottom-4 left-4 bg-orange-500 text-white border-none">
                     <Calendar className="w-3 h-3 mr-1" />
                     Available {room.available}
                   </Badge>
@@ -279,15 +280,15 @@ const Rooms = () => {
 
                 <CardHeader className="pb-4">
                   <div className="mb-4">
-                    <h3 className="text-2xl font-bold text-foreground mb-1">{room.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-3 font-medium">{room.subtitle}</p>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-1">{room.title}</h3>
+                    <p className="text-sm text-gray-600 mb-3 font-medium">{room.subtitle}</p>
                     
                     {/* Enhanced Pricing Display */}
-                    <div className="text-center p-4 bg-gradient-to-r from-tropical-green/5 to-blue-50 rounded-lg border border-tropical-green/20">
-                      <div className="text-3xl font-bold text-tropical-green">
+                    <div className="text-center p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg border border-green-200">
+                      <div className="text-3xl font-bold text-green-600">
                         {room.pricing[selectedPeriod]}
                       </div>
-                      <div className="text-sm text-muted-foreground">
+                      <div className="text-sm text-gray-600">
                         {currentPeriod?.suffix}
                         {currentPeriod?.minStay}
                       </div>
@@ -331,20 +332,20 @@ const Rooms = () => {
                 <CardContent className="pt-0">
                   {/* Key Features Icons - Enhanced */}
                   <div className="grid grid-cols-2 gap-3 mb-6">
-                    <div className="flex items-center text-sm text-muted-foreground">
-                      <Bed className="w-4 h-4 mr-2 text-tropical-green" />
+                    <div className="flex items-center text-sm text-gray-600">
+                      <Bed className="w-4 h-4 mr-2 text-green-600" />
                       <span>Queen Bed</span>
                     </div>
-                    <div className="flex items-center text-sm text-muted-foreground">
-                      <Snowflake className="w-4 h-4 mr-2 text-tropical-green" />
+                    <div className="flex items-center text-sm text-gray-600">
+                      <Snowflake className="w-4 h-4 mr-2 text-green-600" />
                       <span>AC + Fan</span>
                     </div>
-                    <div className="flex items-center text-sm text-muted-foreground">
-                      <Monitor className="w-4 h-4 mr-2 text-tropical-green" />
+                    <div className="flex items-center text-sm text-gray-600">
+                      <Monitor className="w-4 h-4 mr-2 text-green-600" />
                       <span>Workspace</span>
                     </div>
-                    <div className="flex items-center text-sm text-muted-foreground">
-                      <Wifi className="w-4 h-4 mr-2 text-tropical-green" />
+                    <div className="flex items-center text-sm text-gray-600">
+                      <Wifi className="w-4 h-4 mr-2 text-green-600" />
                       <span>100+ Mbps</span>
                     </div>
                   </div>
@@ -352,8 +353,8 @@ const Rooms = () => {
                   {/* Full Features List */}
                   <div className="space-y-2 mb-6">
                     {room.features.map((feature) => (
-                      <div key={feature} className="flex items-center text-sm text-muted-foreground">
-                        <Check className="w-3 h-3 mr-2 text-tropical-green flex-shrink-0" />
+                      <div key={feature} className="flex items-center text-sm text-gray-600">
+                        <Check className="w-3 h-3 mr-2 text-green-600 flex-shrink-0" />
                         <span>{feature}</span>
                       </div>
                     ))}
@@ -362,15 +363,15 @@ const Rooms = () => {
                   {/* Action Buttons - Enhanced */}
                   <div className="space-y-3">
                     <Button 
-                      className="w-full bg-tropical-green hover:bg-accent text-white font-semibold"
-                      onClick={() => window.open(`https://wa.me/639083339477?text=${encodeURIComponent(getBookingMessage(room, selectedPeriod))}`, '_blank')}
+                      className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold"
+                      onClick={() => scrollToSection('contact')}
                     >
                       <MessageCircle className="w-4 h-4 mr-2" />
                       Book Now - {room.pricing[selectedPeriod]}
                     </Button>
                     <Button 
                       variant="outline" 
-                      className="w-full border-tropical-green text-tropical-green hover:bg-tropical-green hover:text-white"
+                      className="w-full border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
                       onClick={() => {
                         const element = document.getElementById('gallery');
                         if (element) element.scrollIntoView({ behavior: 'smooth' });
@@ -380,21 +381,6 @@ const Rooms = () => {
                       See More Photos
                     </Button>
                   </div>
-
-                  {/* Extended Stay CTA - Enhanced */}
-                  {selectedPeriod === "monthly" && (
-                    <div className="mt-4 p-3 bg-gradient-to-r from-tropical-green/10 to-blue-50 rounded-lg border border-tropical-green/20">
-                      <div className="text-xs font-semibold text-tropical-green mb-1">💡 Nomad Community Special</div>
-                      <div className="text-xs text-muted-foreground mb-2">Join nomads staying 2-3 months. Better rates + established connections + local insights</div>
-                      <Button 
-                        size="sm"
-                        className="w-full bg-gradient-to-r from-tropical-green to-blue-600 hover:from-accent hover:to-blue-700 text-white text-xs py-1 font-semibold"
-                        onClick={() => window.open(`https://wa.me/639083339477?text=${encodeURIComponent(`Hi Ali! I'm interested in booking the ${room.title} for 2-3 months starting ${room.available}. I'd love to join your digital nomad community. Can you provide extended stay rates and connect me with current residents?`)}`, '_blank')}
-                      >
-                        Join 2-3 Month Community
-                      </Button>
-                    </div>
-                  )}
                 </CardContent>
               </Card>
             );
@@ -402,17 +388,17 @@ const Rooms = () => {
         </div>
 
         {/* Shared Amenities - Enhanced */}
-        <div className="bg-card rounded-2xl p-8 shadow-soft animate-fade-in mb-12">
-          <h3 className="text-2xl font-bold text-foreground mb-2 text-center">
+        <div className="bg-white rounded-2xl p-8 shadow-lg mb-12">
+          <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center">
             Why 75% of Our Guests Are Digital Nomads
           </h3>
-          <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
             We've perfected the remote work experience. Reliable infrastructure meets authentic island living.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {sharedAmenities.map((amenity, index) => (
-              <div key={index} className="flex items-center text-muted-foreground p-3 rounded-lg hover:bg-tropical-green/5 transition-colors">
-                <amenity.icon className="w-4 h-4 mr-3 text-tropical-green flex-shrink-0" />
+              <div key={index} className="flex items-center text-gray-600 p-3 rounded-lg hover:bg-green-50 transition-colors">
+                <amenity.icon className="w-4 h-4 mr-3 text-green-600 flex-shrink-0" />
                 <span className="text-sm">{amenity.text}</span>
               </div>
             ))}
@@ -420,36 +406,36 @@ const Rooms = () => {
         </div>
 
         {/* Enhanced Social Proof */}
-        <div className="text-center mb-12 animate-fade-in">
-          <div className="bg-gradient-to-r from-tropical-green/10 to-blue-50 rounded-xl p-8 max-w-5xl mx-auto border border-tropical-green/20">
-            <h4 className="text-2xl font-bold text-foreground mb-6">Join Siargao's Premier Remote Work Community</h4>
+        <div className="text-center mb-12">
+          <div className="bg-gradient-to-r from-green-100 to-blue-50 rounded-xl p-8 max-w-5xl mx-auto border border-green-200">
+            <h4 className="text-2xl font-bold text-gray-900 mb-6">Join Siargao's Premier Remote Work Community</h4>
             <div className="grid md:grid-cols-4 gap-6 mb-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-tropical-green mb-1">4.9★</div>
-                <div className="text-sm text-muted-foreground">Average rating</div>
-                <div className="text-xs text-muted-foreground mt-1">"Best WiFi on the island"</div>
+                <div className="text-3xl font-bold text-green-600 mb-1">4.9★</div>
+                <div className="text-sm text-gray-600">Average rating</div>
+                <div className="text-xs text-gray-600 mt-1">"Best WiFi on the island"</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-tropical-green mb-1">75%</div>
-                <div className="text-sm text-muted-foreground">Digital nomads</div>
-                <div className="text-xs text-muted-foreground mt-1">Remote workers choose us</div>
+                <div className="text-3xl font-bold text-green-600 mb-1">75%</div>
+                <div className="text-sm text-gray-600">Digital nomads</div>
+                <div className="text-xs text-gray-600 mt-1">Remote workers choose us</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-tropical-green mb-1">70%</div>
-                <div className="text-sm text-muted-foreground">Extend stay</div>
-                <div className="text-xs text-muted-foreground mt-1">The "Siargao effect"</div>
+                <div className="text-3xl font-bold text-green-600 mb-1">70%</div>
+                <div className="text-sm text-gray-600">Extend stay</div>
+                <div className="text-xs text-gray-600 mt-1">The "Siargao effect"</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-tropical-green mb-1">Fast</div>
-                <div className="text-sm text-muted-foreground">Response time</div>
-                <div className="text-xs text-muted-foreground mt-1">Write anytime</div>
+                <div className="text-3xl font-bold text-green-600 mb-1">Fast</div>
+                <div className="text-sm text-gray-600">Response time</div>
+                <div className="text-xs text-gray-600 mt-1">Write anytime</div>
               </div>
             </div>
             
             {/* Fun Cancellation Stat */}
-            <div className="bg-white/50 border border-tropical-green/30 rounded-lg p-4 max-w-2xl mx-auto">
-              <p className="text-sm text-muted-foreground text-center">
-                <span className="font-semibold text-foreground">Only 1 cancellation ever:</span> Due to Siargao's "authentic" bumpy road experience.
+            <div className="bg-white/50 border border-green-300 rounded-lg p-4 max-w-2xl mx-auto">
+              <p className="text-sm text-gray-600 text-center">
+                <span className="font-semibold text-gray-900">Only 1 cancellation ever:</span> Due to Siargao's "authentic" bumpy road experience.
                 <br />
                 <span className="text-xs italic">Pro tip: It's worth the adventure! Ask our 97% who stayed and loved it.</span>
               </p>
@@ -458,13 +444,13 @@ const Rooms = () => {
         </div>
 
         {/* Urgency & Final CTA */}
-        <div className="text-center animate-fade-in">
-          <div className="bg-gradient-to-r from-sunrise/10 to-tropical-green/10 border-2 border-tropical-green/20 rounded-xl p-8 max-w-3xl mx-auto">
-            <h4 className="text-xl font-bold text-foreground mb-4">August-September 2025: Don't Miss Out</h4>
+        <div className="text-center">
+          <div className="bg-gradient-to-r from-orange-100 to-green-100 border-2 border-green-200 rounded-xl p-8 max-w-3xl mx-auto">
+            <h4 className="text-xl font-bold text-gray-900 mb-4">August-September 2025: Don't Miss Out</h4>
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div className="text-left">
-                <h5 className="font-semibold text-foreground mb-2">⚡ Why Book Now:</h5>
-                <ul className="text-sm text-muted-foreground space-y-1">
+                <h5 className="font-semibold text-gray-900 mb-2">⚡ Why Book Now:</h5>
+                <ul className="text-sm text-gray-600 space-y-1">
                   <li>• Peak surfing season (Siargao Cup in Sept)</li>
                   <li>• Shoulder season pricing (20-30% below peak)</li>
                   <li>• Digital nomads book 2-6 weeks ahead</li>
@@ -472,8 +458,8 @@ const Rooms = () => {
                 </ul>
               </div>
               <div className="text-left">
-                <h5 className="font-semibold text-foreground mb-2">🏄‍♂️ Perfect Timing:</h5>
-                <ul className="text-sm text-muted-foreground space-y-1">
+                <h5 className="font-semibold text-gray-900 mb-2">🏄‍♂️ Perfect Timing:</h5>
+                <ul className="text-sm text-gray-600 space-y-1">
                   <li>• 29°C sea temperature</li>
                   <li>• 6 hours daily sunshine</li>
                   <li>• Less crowded than peak season</li>
@@ -484,13 +470,13 @@ const Rooms = () => {
             <div className="space-y-3">
               <Button 
                 size="lg"
-                className="bg-gradient-to-r from-tropical-green to-blue-600 hover:from-accent hover:to-blue-700 text-white font-bold px-8 py-3"
-                onClick={() => window.open('https://wa.me/639083339477?text=Hi Ali! I want to secure my spot at Salamat Villa for August-September 2025. Can you check availability for my preferred dates and send the booking process?', '_blank')}
+                className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-bold px-8 py-3"
+                onClick={() => scrollToSection('contact')}
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Secure Your Spot Now
               </Button>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-gray-600">
                 Free cancellation • No booking fees • Pay on arrival • Fast response, write anytime
               </p>
             </div>

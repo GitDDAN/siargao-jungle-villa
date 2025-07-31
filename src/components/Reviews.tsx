@@ -5,59 +5,67 @@ import { Star, Quote } from "lucide-react";
 const Reviews = () => {
   const reviews = [
     {
-      name: "Sarah & Mike",
-      location: "Australia",
+      name: "Joma",
+      location: "Manila, Philippines",
       rating: 5,
-      date: "July 2024",
-      text: "Perfect location for our Siargao adventure! Walking to General Luna center was so convenient, and the jungle views from our room were absolutely magical. Ali was incredibly helpful with recommendations and the villa feels like a tropical paradise.",
-      highlight: "Amazing jungle views and perfect location"
+      date: "January 2025",
+      text: "The location is absolutely perfect! You're close enough to everything in General Luna but far enough away from the noise. I could walk to restaurants, bars, and the beach easily, but still enjoy peaceful mornings. The villa sits in the sweet spot between the main roads - genius positioning!",
+      highlight: "Perfect location - close to everything, away from noise"
     },
     {
-      name: "Carlos",
-      location: "Manila, Philippines", 
+      name: "Sam Frame",
+      location: "England", 
       rating: 5,
-      date: "June 2024",
-      text: "As a digital nomad, this place exceeded all expectations. Fast WiFi, comfortable workspace with jungle views, and I could surf Cloud 9 every morning before work. The bamboo architecture is authentic and beautiful. Highly recommended!",
-      highlight: "Perfect for remote work with great surf access"
+      date: "December 2024",
+      text: "What I loved most was the peace and quiet. After busy days exploring the island and surfing, coming back to this tranquil oasis was exactly what I needed. The jungle sounds at night were so relaxing, and I never felt disturbed by party noise from town.",
+      highlight: "Peaceful oasis away from the crowds"
     },
     {
-      name: "Emma & Lisa",
-      location: "Germany",
-      rating: 5,
-      date: "May 2024",
-      text: "We stayed in the balcony room and loved every moment. The private balcony overlooking the jungle was our favorite spot for morning coffee. Clean facilities, secure parking for our motorbike, and walking distance to amazing restaurants.",
-      highlight: "Balcony room with stunning jungle views"
-    },
-    {
-      name: "Jake",
-      location: "California, USA",
-      rating: 5,
-      date: "April 2024",
-      text: "Salamat Villa is the perfect base for exploring Siargao. The common areas are beautifully designed with authentic Filipino architecture. Great for meeting other travelers while still having privacy. Ali's local knowledge saved us so much time!",
-      highlight: "Perfect base for island exploration"
-    },
-    {
-      name: "Marie & Thomas",
-      location: "France",
-      rating: 5,
-      date: "March 2024",
-      text: "The cozy room offered incredible value for money. Double bed was comfortable, jungle views were therapeutic, and the shared kitchen was well-equipped. Felt safe and secure throughout our stay. The tropical garden setting is truly special.",
-      highlight: "Excellent value with beautiful tropical setting"
-    },
-    {
-      name: "Alex",
+      name: "Anna GL",
       location: "Canada",
       rating: 5,
-      date: "February 2024",
-      text: "Best accommodation choice on the island! The blend of modern amenities with traditional architecture is perfect. Weekly cleaning service was great, and having fast WiFi while surrounded by nature was exactly what I needed for remote work.",
-      highlight: "Perfect blend of modern comfort and nature"
+      date: "November 2024",
+      text: "As a surfer, the easy access to all the surf spots was incredible! Cloud 9 is just a short ride away, and I could easily get to other breaks around the island. The villa's location makes it the perfect base for any surf adventure on Siargao.",
+      highlight: "Perfect surf base - easy access to all breaks"
+    },
+    {
+      name: "Thomas",
+      location: "England",
+      rating: 5,
+      date: "October 2024",
+      text: "Being right next door to the CrossFit gym was amazing! I could maintain my fitness routine while on vacation, and after intense workouts, the villa was the perfect place to recover. The combination of fitness access and tropical relaxation was unbeatable.",
+      highlight: "Love being next to CrossFit - perfect for active travelers"
+    },
+    {
+      name: "Mimi Siargao",
+      location: "Australia",
+      rating: 5,
+      date: "September 2024",
+      text: "The value for money blew me away! Getting those incredible jungle views AND air conditioning at this price point felt like winning the lottery. The room stayed perfectly cool during hot afternoons, and waking up to lush greenery every morning was magical.",
+      highlight: "Amazing value - jungle views plus AC comfort"
+    },
+    {
+      name: "Guy Gobourn",
+      location: "Australia",
+      rating: 5,
+      date: "August 2024",
+      text: "The size of this place is phenomenal! Coming from cramped city living, having so much space to spread out was liberating. The villa feels spacious throughout - from the rooms to the common areas. Perfect for longer stays where you really want to feel at home.",
+      highlight: "Love the spacious villa - feels like home"
+    },
+    {
+      name: "Anna",
+      location: "Poland",
+      rating: 5,
+      date: "July 2024",
+      text: "The big open kitchen was my favorite feature! As someone who loves to cook, having that much space and proper equipment made my stay so much better. I could prepare healthy meals with fresh local ingredients, and the kitchen design made cooking feel like part of the vacation experience.",
+      highlight: "Amazing open kitchen perfect for cooking enthusiasts"
     }
   ];
 
   const stats = [
     { label: "Average Rating", value: "5.0★", color: "text-sunrise" },
-    { label: "Repeat Guests", value: "85%", color: "text-tropical-green" },
-    { label: "Response Time", value: "< 1 Hour", color: "text-tropical-green" },
+    { label: "Digital Nomad Guests", value: "75%", color: "text-tropical-green" },
+    { label: "Extended Stays", value: "60%", color: "text-tropical-green" },
     { label: "Location Score", value: "10/10", color: "text-sunrise" }
   ];
 
@@ -78,11 +86,11 @@ const Reviews = () => {
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Guest 
-            <span className="text-tropical-green"> Reviews</span>
+            Real Guest 
+            <span className="text-tropical-green"> Stories</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Don't just take our word for it - hear from travelers who've experienced the magic of Salamat Villa
+            From digital nomads to surf enthusiasts - discover why guests choose Salamat Villa as their Siargao home
           </p>
         </div>
 
@@ -107,7 +115,7 @@ const Reviews = () => {
           {reviews.map((review, index) => (
             <Card 
               key={index} 
-              className="shadow-soft hover:shadow-tropical transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden"
+              className="shadow-soft hover:shadow-tropical transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden h-full"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Quote Icon */}
@@ -115,7 +123,7 @@ const Reviews = () => {
                 <Quote className="w-8 h-8 text-tropical-green" />
               </div>
               
-              <CardContent className="p-6">
+              <CardContent className="p-6 flex flex-col h-full">
                 {/* Rating and Date */}
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex space-x-1">
@@ -134,12 +142,12 @@ const Reviews = () => {
                 </div>
 
                 {/* Review Text */}
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-muted-foreground mb-6 leading-relaxed flex-grow">
                   {review.text}
                 </p>
 
                 {/* Reviewer Info */}
-                <div className="border-t pt-4">
+                <div className="border-t pt-4 mt-auto">
                   <div className="font-semibold text-foreground">{review.name}</div>
                   <div className="text-sm text-muted-foreground flex items-center">
                     <span>{review.location}</span>
@@ -154,22 +162,22 @@ const Reviews = () => {
         <div className="text-center mt-16 animate-fade-in">
           <Card className="bg-gradient-tropical text-white max-w-2xl mx-auto shadow-tropical">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-4">Ready to Create Your Own Story?</h3>
+              <h3 className="text-2xl font-bold mb-4">Ready for Your Siargao Adventure?</h3>
               <p className="mb-6 text-white/90">
-                Join our community of happy guests and experience the magic of Salamat Villa Siargao
+                Join our community of surfers, digital nomads, and island explorers at Salamat Villa
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button 
-                  onClick={() => window.open('https://wa.me/639083339477?text=Hi Ali! I read the amazing reviews and would love to book a room at Salamat Villa!', '_blank')}
+                  onClick={() => window.open('https://wa.me/639083339477?text=Hi Ali! I saw the amazing guest reviews and would love to book my stay at Salamat Villa!', '_blank')}
                   className="bg-white text-tropical-green hover:bg-white/90 transition-colors px-6 py-3 rounded-lg font-semibold"
                 >
                   Book Your Stay Now
                 </button>
                 <button 
-                  onClick={() => window.open('https://instagram.com/alisaaaaa.j', '_blank')}
+                  onClick={() => window.open('https://instagram.com/alisaaaa.j', '_blank')}
                   className="border border-white text-white hover:bg-white hover:text-tropical-green transition-colors px-6 py-3 rounded-lg font-semibold"
                 >
-                  Follow Our Journey
+                  See More Stories
                 </button>
               </div>
             </CardContent>
@@ -179,21 +187,21 @@ const Reviews = () => {
         {/* Review Platform Links */}
         <div className="text-center mt-12 animate-fade-in">
           <p className="text-muted-foreground mb-4">
-            Read more reviews on our social media and booking platforms
+            Connect with our community and see more authentic experiences
           </p>
           <div className="flex justify-center space-x-6">
             <button 
-              onClick={() => window.open('https://instagram.com/alisaaaaa.j', '_blank')}
+              onClick={() => window.open('https://instagram.com/alisaaaa.j', '_blank')}
               className="text-tropical-green hover:text-accent transition-colors font-medium"
             >
-              Instagram Reviews
+              @alisaaaa.j
             </button>
             <span className="text-muted-foreground">•</span>
             <button 
               onClick={() => window.open('https://wa.me/639083339477', '_blank')}
               className="text-tropical-green hover:text-accent transition-colors font-medium"
             >
-              WhatsApp Testimonials
+              WhatsApp Community
             </button>
           </div>
         </div>

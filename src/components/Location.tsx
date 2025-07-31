@@ -9,7 +9,8 @@ import {
   Coffee, 
   Camera,
   Navigation,
-  Bike
+  Bike,
+  Dumbbell
 } from "lucide-react";
 
 const Location = () => {
@@ -31,6 +32,14 @@ const Location = () => {
       description: "Main beach town with restaurants and nightlife"
     },
     {
+      name: "CrossFit Siargao",
+      distance: "Next door",
+      transport: "walk",
+      type: "Fitness",
+      icon: <Dumbbell className="w-5 h-5" />,
+      description: "Perfect for maintaining fitness routine while traveling"
+    },
+    {
       name: "Jacking Horse Beach",
       distance: "8 minutes",
       transport: "motorbike",
@@ -47,14 +56,6 @@ const Location = () => {
       description: "Natural tide pools perfect for swimming"
     },
     {
-      name: "Sugba Lagoon",
-      distance: "1 hour",
-      transport: "motorbike",
-      type: "Adventure",
-      icon: <Camera className="w-5 h-5" />,
-      description: "Kayaking paradise with crystal clear waters"
-    },
-    {
       name: "Tourism Road Restaurants",
       distance: "2 minutes",
       transport: "walk",
@@ -68,6 +69,7 @@ const Location = () => {
     "Cafe Loca - 2 min walk",
     "Bravo Beach Resort - 3 min walk", 
     "Kermit Surf Resort - 5 min walk",
+    "CrossFit Siargao - Next door",
     "Harana Surf Resort - 8 min bike",
     "Siargao Books Cafe - 10 min bike",
     "Island hopping boat tours - 5 min walk"
@@ -83,7 +85,7 @@ const Location = () => {
             <span className="text-tropical-green"> Location</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Perfectly positioned between Tourism Road and Back Road in General Luna - your gateway to all of Siargao's adventures
+            Perfectly positioned between Tourism Road and Back Road in General Luna - close to everything, away from noise
           </p>
         </div>
 
@@ -106,7 +108,7 @@ const Location = () => {
                   </Badge>
                   <h3 className="text-xl font-bold mb-2">Salamat Villa Location</h3>
                   <p className="text-sm text-white/90">
-                    Coordinates: 9.791293, 126.159044
+                    The sweet spot between two roads
                   </p>
                 </div>
               </div>
@@ -125,9 +127,9 @@ const Location = () => {
                   <Navigation className="w-6 h-6 text-tropical-green" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground mb-2">Central Hub Access</h4>
+                  <h4 className="font-semibold text-foreground mb-2">Strategic Between-Roads Position</h4>
                   <p className="text-muted-foreground">
-                    Walking distance to General Luna center with easy access to all major surf spots, restaurants, and island tour departure points.
+                    Perfectly positioned between Tourism Road and Back Road - close to all action but away from party noise. The sweet spot every traveler seeks.
                   </p>
                 </div>
               </div>
@@ -139,19 +141,19 @@ const Location = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-2">Surf & Beach Paradise</h4>
                   <p className="text-muted-foreground">
-                    Just 5 minutes to Cloud 9, the world-famous surf break, and multiple pristine beaches within short rides.
+                    Just 5 minutes to Cloud 9, the world-famous surf break, and multiple pristine beaches within short rides. Perfect surf base.
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-4">
                 <div className="bg-tropical-green/10 p-3 rounded-lg">
-                  <Bike className="w-6 h-6 text-tropical-green" />
+                  <Dumbbell className="w-6 h-6 text-tropical-green" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground mb-2">Easy Island Exploration</h4>
+                  <h4 className="font-semibold text-foreground mb-2">Fitness & Wellness Next Door</h4>
                   <p className="text-muted-foreground">
-                    Perfect base for motorbike adventures to hidden lagoons, rock pools, and secret beaches across the island.
+                    CrossFit Siargao is almost next door - perfect for digital nomads maintaining their fitness routine while working remotely.
                   </p>
                 </div>
               </div>
@@ -161,9 +163,9 @@ const Location = () => {
                   <Coffee className="w-6 h-6 text-tropical-green" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground mb-2">Dining & Nightlife</h4>
+                  <h4 className="font-semibold text-foreground mb-2">Dining & Digital Nomad Community</h4>
                   <p className="text-muted-foreground">
-                    Tourism Road's best restaurants, cafes, and bars are just steps away for convenient dining and socializing.
+                    Tourism Road's best cafes, coworking spots, and restaurants are just steps away - perfect for networking with other remote workers.
                   </p>
                 </div>
               </div>
@@ -171,7 +173,7 @@ const Location = () => {
 
             <Button 
               className="mt-8 bg-tropical-green hover:bg-accent text-white"
-              onClick={() => window.open('https://goo.gl/maps/xyz123', '_blank')}
+              onClick={() => window.open('https://maps.google.com/maps?q=9.791293,126.159044', '_blank')}
             >
               <MapPin className="w-4 h-4 mr-2" />
               Open in Google Maps

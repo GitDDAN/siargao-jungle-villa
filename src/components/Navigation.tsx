@@ -28,15 +28,15 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-md z-50 border-b border-border">
+    <nav className="fixed top-0 w-full nav-professional z-50">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="text-2xl font-bold text-ocean-blue">
+            <div className="text-2xl font-bold text-foreground">
               Salamat Villa
             </div>
-            <span className="text-muted-foreground text-sm hidden sm:block">Siargao</span>
+            <span className="text-ocean-blue text-sm hidden sm:block font-medium">Siargao</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -45,14 +45,14 @@ const Navigation = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-foreground hover:text-ocean-blue transition-colors duration-200 font-medium"
+                className="nav-link"
               >
                 {item.label}
               </button>
             ))}
             <button
               onClick={handleSurfSpotsClick}
-              className="text-foreground hover:text-sunset-orange transition-colors duration-200 font-medium flex items-center"
+              className="text-coral-orange hover:text-coral-orange-dark transition-colors duration-200 font-medium flex items-center"
               style={{ fontFamily: 'Pacifico, cursive' }}
             >
               Surf Spots
@@ -67,7 +67,7 @@ const Navigation = () => {
             <Button 
               variant="outline" 
               size="sm"
-              className="border-ocean-blue text-ocean-blue hover:bg-ocean-blue hover:text-white"
+              className="border-ocean-blue text-ocean-blue hover:bg-ocean-blue hover:text-white transition-all duration-300"
               onClick={() => window.open('https://wa.me/639083339477', '_blank')}
             >
               <MessageCircle className="w-4 h-4 mr-2" />
@@ -75,7 +75,7 @@ const Navigation = () => {
             </Button>
             <Button 
               size="sm"
-              className="bg-ocean-blue hover:bg-ocean-blue-dark text-white"
+              className="btn-ocean"
               onClick={() => scrollToSection('contact')}
             >
               Book Now
@@ -91,7 +91,7 @@ const Navigation = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px] sm:w-[320px] max-w-[90vw]">
               <div className="flex flex-col space-y-6 mt-8">
-                <div className="text-xl font-bold text-ocean-blue mb-4">
+                <div className="text-xl font-bold text-foreground mb-4">
                   Salamat Villa Siargao
                 </div>
                 
@@ -99,7 +99,7 @@ const Navigation = () => {
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className="text-left text-lg text-foreground hover:text-ocean-blue transition-colors py-2"
+                    className="text-left text-lg nav-link py-2"
                   >
                     {item.label}
                   </button>
@@ -107,7 +107,7 @@ const Navigation = () => {
                 
                 <button
                   onClick={handleSurfSpotsClick}
-                  className="text-left text-lg text-foreground hover:text-sunset-orange transition-colors py-2 flex items-center"
+                  className="text-left text-lg text-coral-orange hover:text-coral-orange transition-colors py-2 flex items-center"
                   style={{ fontFamily: 'Pacifico, cursive' }}
                 >
                   Surf Spots
@@ -118,7 +118,7 @@ const Navigation = () => {
 
                 <div className="border-t pt-6 space-y-3">
                   <Button 
-                    className="w-full bg-ocean-blue hover:bg-ocean-blue-dark text-white"
+                    className="w-full btn-ocean"
                     onClick={() => window.open('https://wa.me/639083339477', '_blank')}
                   >
                     <MessageCircle className="w-4 h-4 mr-2" />

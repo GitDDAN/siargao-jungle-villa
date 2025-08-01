@@ -63,10 +63,10 @@ const Reviews = () => {
   ];
 
   const stats = [
-    { label: "Average Rating", value: "5.0★", color: "text-sunrise" },
+    { label: "Average Rating", value: "5.0★", color: "text-coral-orange" },
     { label: "Digital Nomad Guests", value: "75%", color: "text-tropical-green" },
     { label: "Extended Stays", value: "60%", color: "text-tropical-green" },
-    { label: "Location Score", value: "10/10", color: "text-sunrise" }
+    { label: "Location Score", value: "10/10", color: "text-coral-orange" }
   ];
 
   const renderStars = (rating: number) => {
@@ -74,22 +74,22 @@ const Reviews = () => {
       <Star 
         key={i} 
         className={`w-4 h-4 ${
-          i < rating ? 'text-sunrise fill-current' : 'text-muted-foreground/30'
+          i < rating ? 'text-coral-orange fill-current' : 'text-muted-foreground/30'
         }`} 
       />
     ));
   };
 
   return (
-    <section id="reviews" className="py-20 bg-background">
+    <section id="reviews" className="py-20 section-clean">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="heading-secondary mb-6">
             Real Guest 
-            <span className="text-tropical-green"> Stories</span>
+            <span className="text-ocean-blue"> Stories</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-large text-gray-700 max-w-3xl mx-auto">
             From digital nomads to surf enthusiasts - discover why guests choose Salamat Villa as their Siargao home
           </p>
         </div>
@@ -97,7 +97,7 @@ const Reviews = () => {
         {/* Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16 animate-fade-in">
           {stats.map((stat, index) => (
-            <Card key={index} className="text-center shadow-soft hover:shadow-tropical transition-all duration-300">
+            <Card key={index} className="card-professional text-center transition-all duration-300">
               <CardContent className="py-8">
                 <div className={`text-3xl font-bold mb-2 ${stat.color}`}>
                   {stat.value}
@@ -115,12 +115,12 @@ const Reviews = () => {
           {reviews.map((review, index) => (
             <Card 
               key={index} 
-              className="shadow-soft hover:shadow-tropical transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden h-full"
+              className="card-professional transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden h-full"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Quote Icon */}
               <div className="absolute top-4 right-4 opacity-10">
-                <Quote className="w-8 h-8 text-tropical-green" />
+                <Quote className="w-8 h-8 text-ocean-blue" />
               </div>
               
               <CardContent className="p-6 flex flex-col h-full">
@@ -135,8 +135,8 @@ const Reviews = () => {
                 </div>
 
                 {/* Highlight */}
-                <div className="bg-tropical-green/10 rounded-lg p-3 mb-4">
-                  <p className="text-sm font-medium text-tropical-green italic">
+                <div className="bg-ocean-blue/10 rounded-lg p-3 mb-4">
+                  <p className="text-sm font-medium text-ocean-blue italic">
                     "{review.highlight}"
                   </p>
                 </div>
@@ -160,7 +160,7 @@ const Reviews = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-16 animate-fade-in">
-          <Card className="bg-gradient-tropical text-white max-w-2xl mx-auto shadow-tropical">
+          <Card className="bg-gradient-ocean text-white max-w-2xl mx-auto shadow-xl">
             <CardContent className="p-8">
               <h3 className="text-2xl font-bold mb-4">Ready for Your Siargao Adventure?</h3>
               <p className="mb-6 text-white/90">
@@ -169,13 +169,13 @@ const Reviews = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button 
                   onClick={() => window.open('https://wa.me/639083339477?text=Hi Ali! I saw the amazing guest reviews and would love to book my stay at Salamat Villa!', '_blank')}
-                  className="bg-white text-tropical-green hover:bg-white/90 transition-colors px-6 py-3 rounded-lg font-semibold"
+                  className="bg-white text-ocean-blue hover:bg-white/90 transition-colors px-6 py-3 rounded-lg font-semibold"
                 >
                   Book Your Stay Now
                 </button>
                 <button 
                   onClick={() => window.open('https://instagram.com/alisaaaa.j', '_blank')}
-                  className="border border-white text-white hover:bg-white hover:text-tropical-green transition-colors px-6 py-3 rounded-lg font-semibold"
+                  className="border border-white text-white hover:bg-white hover:text-ocean-blue transition-colors px-6 py-3 rounded-lg font-semibold"
                 >
                   See More Stories
                 </button>
@@ -192,14 +192,14 @@ const Reviews = () => {
           <div className="flex justify-center space-x-6">
             <button 
               onClick={() => window.open('https://instagram.com/alisaaaa.j', '_blank')}
-              className="text-tropical-green hover:text-accent transition-colors font-medium"
+              className="text-ocean-blue hover:text-ocean-blue-dark transition-colors font-medium"
             >
               @alisaaaa.j
             </button>
             <span className="text-muted-foreground">•</span>
             <button 
               onClick={() => window.open('https://wa.me/639083339477', '_blank')}
-              className="text-tropical-green hover:text-accent transition-colors font-medium"
+              className="text-ocean-blue hover:text-ocean-blue-dark transition-colors font-medium"
             >
               WhatsApp Community
             </button>

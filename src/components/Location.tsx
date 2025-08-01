@@ -76,15 +76,15 @@ const Location = () => {
   ];
 
   return (
-    <section id="location" className="py-20 bg-gradient-hero">
+    <section id="location" className="py-20 section-clean">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="heading-secondary mb-6">
             Prime 
-            <span className="text-tropical-green"> Location</span>
+            <span className="text-ocean-blue"> Location</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-large text-gray-700 max-w-3xl mx-auto">
             Perfectly positioned between Tourism Road and Back Road in General Luna - close to everything, away from noise
           </p>
         </div>
@@ -93,7 +93,7 @@ const Location = () => {
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Map Placeholder */}
           <div className="animate-fade-in">
-            <Card className="overflow-hidden shadow-warm h-full">
+            <Card className="card-professional overflow-hidden h-full">
               <div className="relative h-96 lg:h-full">
                 <img 
                   src="/lovable-uploads/f27cb854-871b-4105-b007-0eae90fb8d40.png"
@@ -102,7 +102,7 @@ const Location = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <Badge className="mb-2 bg-tropical-green text-white border-none">
+                  <Badge className="mb-2 bg-ocean-blue text-white border-none">
                     <MapPin className="w-3 h-3 mr-1" />
                     General Luna, Siargao
                   </Badge>
@@ -123,8 +123,8 @@ const Location = () => {
             
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <div className="bg-tropical-green/10 p-3 rounded-lg">
-                  <Navigation className="w-6 h-6 text-tropical-green" />
+                <div className="bg-ocean-blue/10 p-3 rounded-lg">
+                  <Navigation className="w-6 h-6 text-ocean-blue" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-2">Strategic Between-Roads Position</h4>
@@ -135,8 +135,8 @@ const Location = () => {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="bg-tropical-green/10 p-3 rounded-lg">
-                  <Waves className="w-6 h-6 text-tropical-green" />
+                <div className="bg-ocean-blue/10 p-3 rounded-lg">
+                  <Waves className="w-6 h-6 text-ocean-blue" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-2">Surf & Beach Paradise</h4>
@@ -147,8 +147,8 @@ const Location = () => {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="bg-tropical-green/10 p-3 rounded-lg">
-                  <Dumbbell className="w-6 h-6 text-tropical-green" />
+                <div className="bg-ocean-blue/10 p-3 rounded-lg">
+                  <Dumbbell className="w-6 h-6 text-ocean-blue" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-2">Fitness & Wellness Next Door</h4>
@@ -159,8 +159,8 @@ const Location = () => {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="bg-tropical-green/10 p-3 rounded-lg">
-                  <Coffee className="w-6 h-6 text-tropical-green" />
+                <div className="bg-ocean-blue/10 p-3 rounded-lg">
+                  <Coffee className="w-6 h-6 text-ocean-blue" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-2">Dining & Digital Nomad Community</h4>
@@ -172,7 +172,7 @@ const Location = () => {
             </div>
 
             <Button 
-              className="mt-8 bg-tropical-green hover:bg-accent text-white"
+              className="mt-8 btn-ocean"
               onClick={() => window.open('https://maps.google.com/maps?q=9.791293,126.159044', '_blank')}
             >
               <MapPin className="w-4 h-4 mr-2" />
@@ -191,12 +191,12 @@ const Location = () => {
             {attractions.map((attraction, index) => (
               <Card 
                 key={index} 
-                className="shadow-soft hover:shadow-tropical transition-all duration-300 transform hover:-translate-y-1"
+                className="card-professional transition-all duration-300 transform hover:-translate-y-1"
               >
                 <CardHeader className="pb-3">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center space-x-3">
-                      <div className="bg-tropical-green/10 p-2 rounded-lg">
+                      <div className="bg-ocean-blue/10 p-2 rounded-lg">
                         {attraction.icon}
                       </div>
                       <div>
@@ -209,7 +209,7 @@ const Location = () => {
                   </div>
                 </CardHeader>
                 <CardContent className="pt-0">
-                  <div className="flex items-center mb-3 text-tropical-green font-semibold">
+                  <div className="flex items-center mb-3 text-ocean-blue font-semibold">
                     <Clock className="w-4 h-4 mr-2" />
                     {attraction.distance} by {attraction.transport}
                   </div>
@@ -224,7 +224,7 @@ const Location = () => {
 
         {/* Nearby Spots */}
         <div className="animate-fade-in">
-          <Card className="bg-card shadow-warm">
+          <Card className="card-professional">
             <CardHeader>
               <CardTitle className="text-2xl text-center">
                 Walking Distance Amenities
@@ -234,7 +234,7 @@ const Location = () => {
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {nearbySpots.map((spot, index) => (
                   <div key={index} className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-tropical-green rounded-full flex-shrink-0" />
+                    <div className="w-2 h-2 bg-ocean-blue rounded-full flex-shrink-0" />
                     <span className="text-muted-foreground">{spot}</span>
                   </div>
                 ))}
@@ -245,9 +245,9 @@ const Location = () => {
 
         {/* Transportation Note */}
         <div className="text-center mt-12 animate-fade-in">
-          <div className="bg-sunrise/10 border border-sunrise/20 rounded-lg p-6 max-w-2xl mx-auto">
+          <div className="bg-coral-orange/10 border border-coral-orange/20 rounded-lg p-6 max-w-2xl mx-auto">
             <h4 className="font-semibold text-foreground mb-2 flex items-center justify-center">
-              <Bike className="w-5 h-5 mr-2 text-sunrise" />
+              <Bike className="w-5 h-5 mr-2 text-coral-orange" />
               Getting Around Siargao
             </h4>
             <p className="text-muted-foreground">

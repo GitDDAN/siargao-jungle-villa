@@ -267,15 +267,15 @@ const Gallery = () => {
   };
 
   return (
-    <section id="gallery" className="py-20 bg-background">
+    <section id="gallery" className="py-20 section-neutral">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="heading-secondary mb-6">
             Villa 
-            <span className="text-tropical-green"> Gallery</span>
+            <span className="text-ocean-blue"> Gallery</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-large text-gray-700 max-w-3xl mx-auto">
             Explore our photos and videos - from room tours to amenity showcases
           </p>
         </div>
@@ -288,8 +288,8 @@ const Gallery = () => {
               variant={selectedCategory === category ? "default" : "outline"}
               className={`transition-all duration-200 ${
                 selectedCategory === category 
-                  ? "bg-tropical-green hover:bg-accent text-white" 
-                  : "border-tropical-green text-tropical-green hover:bg-tropical-green hover:text-white"
+                  ? "btn-ocean" 
+                  : "border-ocean-blue text-ocean-blue hover:bg-ocean-blue hover:text-white"
               }`}
               onClick={() => setSelectedCategory(category)}
             >
@@ -303,7 +303,7 @@ const Gallery = () => {
           {filteredImages.map((item, index) => (
             <Card 
               key={index} 
-              className="group overflow-hidden shadow-soft hover:shadow-tropical transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
+              className="card-professional group overflow-hidden cursor-pointer transform hover:-translate-y-1"
               onClick={() => openLightbox(index)}
             >
               <div className="relative aspect-[4/3] overflow-hidden">
@@ -318,12 +318,12 @@ const Gallery = () => {
                 {/* Multiple Category Badges */}
                 <div className="absolute top-3 left-3 flex flex-wrap gap-1">
                   {item.categories.slice(0, 2).map((cat, idx) => (
-                    <Badge key={idx} className="bg-tropical-green/90 text-white border-none text-xs">
+                    <Badge key={idx} className="bg-ocean-blue/90 text-white border-none text-xs">
                       {cat}
                     </Badge>
                   ))}
                   {item.categories.length > 2 && (
-                    <Badge className="bg-tropical-green/90 text-white border-none text-xs">
+                    <Badge className="bg-ocean-blue/90 text-white border-none text-xs">
                       +{item.categories.length - 2}
                     </Badge>
                   )}
@@ -333,9 +333,9 @@ const Gallery = () => {
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="bg-white/90 rounded-full p-3">
                     {item.type === 'video' ? (
-                      <Play className="w-6 h-6 text-tropical-green" />
+                      <Play className="w-6 h-6 text-ocean-blue" />
                     ) : (
-                      <ZoomIn className="w-6 h-6 text-tropical-green" />
+                      <ZoomIn className="w-6 h-6 text-ocean-blue" />
                     )}
                   </div>
                 </div>
@@ -343,7 +343,7 @@ const Gallery = () => {
                 {/* Video indicator */}
                 {item.type === 'video' && (
                   <div className="absolute top-3 right-3">
-                    <Badge className="bg-red-500/90 text-white border-none text-xs">
+                    <Badge className="bg-coral-orange/90 text-white border-none text-xs">
                       VIDEO
                     </Badge>
                   </div>
@@ -361,9 +361,9 @@ const Gallery = () => {
 
         {/* Placeholder for Additional Images */}
         <div className="mt-12 animate-fade-in">
-          <Card className="p-8 text-center border-2 border-dashed border-tropical-green/30 bg-tropical-green/5">
+          <Card className="p-8 text-center border-2 border-dashed border-ocean-blue/30 bg-ocean-blue/5">
             <div className="max-w-md mx-auto">
-              <div className="text-tropical-green mb-4">
+              <div className="text-ocean-blue mb-4">
                 <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z" />
                 </svg>
@@ -380,7 +380,7 @@ const Gallery = () => {
         <div className="text-center mt-12 animate-fade-in">
           <Button 
             size="lg"
-            className="bg-tropical-green hover:bg-accent text-white shadow-tropical"
+            className="btn-ocean"
             onClick={() => window.open('https://wa.me/639083339477?text=Hi Ali! I loved the villa photos and videos. Can I schedule a video call to see more?', '_blank')}
           >
             Request Virtual Tour Call
@@ -444,7 +444,7 @@ const Gallery = () => {
             <div className="absolute bottom-4 left-4 right-4 bg-black/50 rounded-lg p-4 text-white">
               <div className="flex flex-wrap gap-2 mb-2">
                 {filteredImages[selectedImage].categories.map((cat, idx) => (
-                  <Badge key={idx} className="bg-tropical-green/90 text-white border-none text-xs">
+                  <Badge key={idx} className="bg-ocean-blue/90 text-white border-none text-xs">
                     {cat}
                   </Badge>
                 ))}

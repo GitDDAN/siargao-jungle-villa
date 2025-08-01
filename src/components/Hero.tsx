@@ -1,250 +1,626 @@
 import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Wifi, Shield, MessageCircle, Star, TrendingUp, Users } from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { 
+  MessageCircle, 
+  Phone, 
+  Mail, 
+  Instagram, 
+  MapPin, 
+  Calendar,
+  Users,
+  Clock,
+  CheckCircle,
+  AlertCircle,
+  Wifi,
+  Bath,
+  Bed
+} from "lucide-react";
 
-const Hero = () => {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    checkIn: "",
+    checkOut: "",
+    guests: "1",
+    roomPreference: "",
+    message: ""
+  });
+
+  const [availabilityAlert, setAvailabilityAlert] = useState("");
+  const [selectedRooms, setSelectedRooms] = useState([]);
+
+  // Room availability data based on your market analysis
+  const roomAvailability = {
+    "Ensuite Master": {
+      price: 33000,
+      priceNightly: 1200,
+      availableFrom: "2025-08-07",
+      features: ["Private bathroom", "AC", "Workspace", "Balcony access"],
+      maxGuests: 2,
+      status: "available"
+    },
+    "Balcony Room": {
+      price: 31000,
+      priceNightly: 1100,
+      availableFrom: "2025-08-15",
+      features: ["Private balcony", "AC", "Workspace", "Garden view"],
+      maxGuests: 2,
+      status: "available"
+    },
+    "Cozy Room": {
+      price: 28000,
+      priceNightly: 1000,
+      availableFrom: "2025-08-15",
+      features: ["AC", "Workspace", "Shared bathroom", "Cozy atmosphere"],
+      maxGuests: 1,
+      status: "available"
     }
   };
 
-  const residents = [
-    { name: "Daniel", age: 40, country: "Denmark", initials: "D" },
-    { name: "Ali", age: 29, country: "Philippines", initials: "A" },
-    { name: "Joma", age: 21, country: "Philippines", initials: "J" },
-    { name: "Sam", age: 27, country: "England", initials: "S" },
-    { name: "Anna", age: 30, country: "Canada", initials: "A" }
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+
+    // Check availability when dates change
+    if (name === 'checkIn' || name === 'checkOut') {
+      checkRoomAvailability({ ...formData, [name]: value });
+    }
+  };
+
+  const checkRoomAvailability = (data) => {
+    if (!data.checkIn) return;
+
+    const checkInDate = new Date(data.checkIn);
+    const availableRooms = [];
+    let alertMessage = "";
+
+    Object.entries(roomAvailability).forEach(([roomName, room]) => {
+      const availableFromDate = new Date(room.availableFrom);
+      if (checkInDate >= availableFromDate) {
+        availableRooms.push(roomName);
+      }
+    });
+
+    if (availableRooms.length === 0) {
+      alertMessage = "No rooms available for your selected check-in date. First available date is August 7th, 2025.";
+    } else if (availableRooms.length === 1) {
+      alertMessage = `Only ${availableRooms[0]} is available for your selected dates.`;
+    } else {
+      alertMessage = `${availableRooms.length} rooms available for your selected dates: ${availableRooms.join(', ')}.`;
+    }
+
+    setAvailabilityAlert(alertMessage);
+    setSelectedRooms(availableRooms);
+  };
+
+  const getRoomStatusBadge = (roomName) => {
+    if (!formData.checkIn) return null;
+    
+    const checkInDate = new Date(formData.checkIn);
+    const availableFromDate = new Date(roomAvailability[roomName].availableFrom);
+    
+    if (checkInDate >= availableFromDate) {
+      return <Badge className="bg-green-500 text-white">Available</Badge>;
+    } else {
+      return <Badge variant="secondary">Available from {roomAvailability[roomName].availableFrom}</Badge>;
+    }
+  };
+
+  const calculateStayDuration = () => {
+    if (!formData.checkIn || !formData.checkOut) return null;
+    
+    const checkIn = new Date(formData.checkIn);
+    const checkOut = new Date(formData.checkOut);
+    const diffTime = checkOut.getTime() - checkIn.getTime();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    return diffDays > 0 ? diffDays : null;
+  };
+
+  const getEstimatedCost = () => {
+    const duration = calculateStayDuration();
+    if (!duration || !formData.roomPreference) return null;
+    
+    const room = roomAvailability[formData.roomPreference];
+    if (!room) return null;
+    
+    if (duration >= 28) {
+      // Monthly rate
+      const months = Math.ceil(duration / 30);
+      return {
+        type: "monthly",
+        amount: room.price * months,
+        breakdown: `₱${room.price.toLocaleString()}/month × ${months} month${months > 1 ? 's' : ''}`
+      };
+    } else {
+      // Nightly rate with weekly discount
+      const weeklyDiscount = duration >= 7 ? 0.8 : 1; // 20% discount for weekly stays
+      const totalCost = room.priceNightly * duration * weeklyDiscount;
+      return {
+        type: "nightly",
+        amount: totalCost,
+        breakdown: `₱${room.priceNightly.toLocaleString()}/night × ${duration} nights${duration >= 7 ? ' (20% weekly discount applied)' : ''}`
+      };
+    }
+  };
+
+  const handleSubmit = () => {
+    
+    const duration = calculateStayDuration();
+    const cost = getEstimatedCost();
+    
+    let message = `Hi Ali! I'm interested in booking Salamat Villa Siargao.
+
+Guest Details:
+• Name: ${formData.name}
+• Email: ${formData.email}
+• Phone: ${formData.phone}
+
+Booking Details:
+• Check-in: ${formData.checkIn}
+• Check-out: ${formData.checkOut}
+• Duration: ${duration ? `${duration} day${duration > 1 ? 's' : ''}` : 'Not specified'}
+• Number of guests: ${formData.guests}
+• Room preference: ${formData.roomPreference || 'Any available room'}`;
+
+    if (cost) {
+      message += `
+• Estimated cost: ₱${cost.amount.toLocaleString()} (${cost.breakdown})`;
+    }
+
+    if (formData.message) {
+      message += `
+
+Additional Message: ${formData.message}`;
+    }
+
+    message += `
+
+Looking forward to hearing from you!`;
+
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/639083339477?text=${encodedMessage}`, '_blank');
+  };
+
+  const contactMethods = [
+    {
+      icon: <MessageCircle className="w-6 h-6" />,
+      title: "WhatsApp",
+      value: "+63 908 333 9477",
+      description: "Fastest response - usually within 1 hour",
+      action: () => window.open('https://wa.me/639083339477', '_blank'),
+      primary: true
+    },
+    {
+      icon: <Phone className="w-6 h-6" />,
+      title: "Phone Call",
+      value: "+63 908 333 9477",
+      description: "Direct line to Ali",
+      action: () => window.open('tel:+639083339477', '_blank'),
+      primary: false
+    },
+    {
+      icon: <Mail className="w-6 h-6" />,
+      title: "Email",
+      value: "alisamarijaen@gmail.com",
+      description: "For detailed inquiries",
+      action: () => window.open('mailto:alisamarijaen@gmail.com', '_blank'),
+      primary: false
+    },
+    {
+      icon: <Instagram className="w-6 h-6" />,
+      title: "Instagram",
+      value: "@alisaaaa.j",
+      description: "Follow for updates & photos",
+      action: () => window.open('https://instagram.com/alisaaaa.j', '_blank'),
+      primary: false
+    }
   ];
 
+  const quickFacts = [
+    {
+      icon: <Calendar className="w-5 h-5" />,
+      text: "Rooms available August 7th & 15th"
+    },
+    {
+      icon: <Clock className="w-5 h-5" />,
+      text: "Response time: Under 1 hour"
+    },
+    {
+      icon: <MapPin className="w-5 h-5" />,
+      text: "General Luna, Siargao"
+    },
+    {
+      icon: <CheckCircle className="w-5 h-5" />,
+      text: "Instant booking confirmation"
+    }
+  ];
+
+  const today = new Date().toISOString().split('T')[0];
+  const estimatedCost = getEstimatedCost();
+
   return (
-    <section id="hero" className="min-h-screen relative overflow-hidden">
-      {/* Subtle Wave Graphics - Professional */}
-      <div className="absolute inset-0 pointer-events-none opacity-5">
-        <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 1200 800">
-          <defs>
-            <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#0ea5e9" />
-              <stop offset="100%" stopColor="#06b6d4" />
-            </linearGradient>
-          </defs>
-          <path 
-            d="M0,400 Q300,350 600,400 T1200,400 V800 H0 Z" 
-            fill="url(#wave-gradient)" 
-            className="animate-pulse"
-          />
-        </svg>
-      </div>
+    <section id="contact" className="py-20 section-neutral">
+      <div className="container mx-auto px-4">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="heading-secondary mb-6">
+            Book Your 
+            <span className="text-ocean-blue"> Paradise</span>
+          </h2>
+          <p className="text-large text-gray-700 max-w-3xl mx-auto">
+            Ready to experience authentic tropical living? Check availability and book your perfect Siargao stay
+          </p>
+        </div>
 
-      {/* Subtle Surfboard Graphics */}
-      <div className="absolute left-8 top-1/2 opacity-8 animate-float">
-        <svg width="60" height="15" viewBox="0 0 60 15" className="text-cyan-600">
-          <ellipse cx="30" cy="7.5" rx="25" ry="6" fill="currentColor" opacity="0.6"/>
-          <rect x="27" y="5" width="6" height="5" fill="currentColor" opacity="0.8" rx="2"/>
-        </svg>
-      </div>
-
-      <div className="absolute right-12 top-1/3 opacity-6 animate-float" style={{animationDelay: '2s'}}>
-        <svg width="80" height="20" viewBox="0 0 80 20" className="text-orange-500 transform rotate-12">
-          <ellipse cx="40" cy="10" rx="35" ry="8" fill="currentColor" opacity="0.5"/>
-          <path d="M15 10 Q40 6 65 10 Q40 14 15 10" fill="none" stroke="currentColor" strokeWidth="1"/>
-        </svg>
-      </div>
-
-      {/* Professional Background with Subtle Gradient */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `
-            linear-gradient(135deg, 
-              rgba(15, 23, 42, 0.85) 0%, 
-              rgba(30, 58, 138, 0.75) 25%,
-              rgba(6, 182, 212, 0.6) 75%,
-              rgba(14, 165, 233, 0.8) 100%
-            ), 
-            url('/lovable-uploads/upscalemedia-transformed (1).png')
-          `
-        }}
-      />
-      
-      {/* Main Content */}
-      <div className="relative z-10 container mx-auto px-4 py-32 flex items-center min-h-screen">
-        <div className="max-w-4xl text-white">
-          {/* Professional Location Badge */}
-          <Badge className="mb-6 bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20 text-sm py-2 px-4">
-            <MapPin className="w-4 h-4 mr-2" />
-            General Luna, Siargao, Philippines
-          </Badge>
-
-          {/* Compact Current Residents Display */}
-          <div className="mb-8 p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 max-w-2xl">
-            <div className="flex items-center gap-2 mb-3 text-cyan-200 text-sm font-medium">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              Currently staying:
-            </div>
-            <div className="flex flex-wrap items-center gap-3">
-              {residents.map((resident, index) => (
-                <div key={index} className="flex items-center gap-2 text-sm">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white text-xs font-bold border border-white/20">
-                    {resident.initials}
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Contact Form */}
+          <div>
+            <Card className="card-professional">
+              <CardHeader>
+                <CardTitle className="text-2xl text-center">
+                  Check Availability & Book
+                </CardTitle>
+                <p className="text-gray-600 text-center">
+                  Real-time availability checker with instant WhatsApp booking
+                </p>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  {/* Personal Details */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="name">Full Name *</Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        className="input-professional"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="Your full name"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="email">Email *</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        className="input-professional"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="your@email.com"
+                      />
+                    </div>
                   </div>
-                  <span className="text-white/90">
-                    {resident.name} ({resident.age}, {resident.country})
-                  </span>
-                  {index < residents.length - 1 && (
-                    <span className="text-white/40 mx-1">•</span>
+
+                  <div>
+                    <Label htmlFor="phone">WhatsApp Number</Label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      className="input-professional"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      placeholder="+63 9XX XXX XXXX"
+                    />
+                  </div>
+
+                  {/* Booking Details */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="checkIn">Check-in Date *</Label>
+                      <Input
+                        id="checkIn"
+                        name="checkIn"
+                        type="date"
+                        className="input-professional"
+                        value={formData.checkIn}
+                        onChange={handleInputChange}
+                        min={today}
+                        required
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="checkOut">Check-out Date</Label>
+                      <Input
+                        id="checkOut"
+                        name="checkOut"
+                        type="date"
+                        className="input-professional"
+                        value={formData.checkOut}
+                        onChange={handleInputChange}
+                        min={formData.checkIn || today}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Availability Alert */}
+                  {availabilityAlert && (
+                    <Alert className={selectedRooms.length > 0 ? "border-tropical-green bg-tropical-green/10" : "border-coral-orange bg-coral-orange/10"}>
+                      <AlertCircle className="h-4 w-4" />
+                      <AlertDescription>
+                        {availabilityAlert}
+                      </AlertDescription>
+                    </Alert>
                   )}
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="guests">Number of Guests</Label>
+                      <select
+                        id="guests"
+                        name="guests"
+                        value={formData.guests}
+                        onChange={handleInputChange}
+                        className="input-professional w-full"
+                      >
+                        <option value="1">1 Guest</option>
+                        <option value="2">2 Guests</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4+ Guests</option>
+                      </select>
+                    </div>
+                    <div>
+                      <Label htmlFor="roomPreference">Room Selection</Label>
+                      <select
+                        id="roomPreference"
+                        name="roomPreference"
+                        value={formData.roomPreference}
+                        onChange={handleInputChange}
+                        className="input-professional w-full"
+                      >
+                        <option value="">Select a room</option>
+                        {Object.entries(roomAvailability).map(([roomName, room]) => (
+                          <option 
+                            key={roomName} 
+                            value={roomName}
+                            disabled={formData.checkIn && selectedRooms.length > 0 && !selectedRooms.includes(roomName)}
+                          >
+                            {roomName} - ₱{room.price.toLocaleString()}/month
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Room Details */}
+                  {formData.roomPreference && (
+                    <Card className="bg-neutral-50">
+                      <CardContent className="p-4">
+                        <div className="flex justify-between items-start mb-3">
+                          <h4 className="font-semibold text-lg">{formData.roomPreference}</h4>
+                          {getRoomStatusBadge(formData.roomPreference)}
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                          <div>
+                            <p className="text-sm text-gray-600 mb-2">Monthly Rate</p>
+                            <p className="text-2xl font-bold text-ocean-blue">
+                              ₱{roomAvailability[formData.roomPreference].price.toLocaleString()}
+                            </p>
+                          </div>
+                          <div>
+                            <p className="text-sm text-gray-600 mb-2">Nightly Rate</p>
+                            <p className="text-lg font-semibold">
+                              ₱{roomAvailability[formData.roomPreference].priceNightly.toLocaleString()}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          {roomAvailability[formData.roomPreference].features.map((feature, index) => (
+                            <Badge key={index} variant="outline" className="text-xs">
+                              {feature}
+                            </Badge>
+                          ))}
+                        </div>
+                        <p className="text-sm text-gray-600">
+                          Available from: {roomAvailability[formData.roomPreference].availableFrom}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  )}
+
+                  {/* Cost Estimate */}
+                  {estimatedCost && (
+                    <Card className="bg-tropical-green/10 border-tropical-green/30">
+                      <CardContent className="p-4">
+                        <h4 className="font-semibold text-tropical-green mb-2">Estimated Cost</h4>
+                        <p className="text-2xl font-bold text-tropical-green">
+                          ₱{estimatedCost.amount.toLocaleString()}
+                        </p>
+                        <p className="text-sm text-tropical-green">{estimatedCost.breakdown}</p>
+                        {calculateStayDuration() >= 28 && (
+                          <p className="text-xs text-tropical-green mt-1">
+                            Monthly rates include all utilities and high-speed internet
+                          </p>
+                        )}
+                      </CardContent>
+                    </Card>
+                  )}
+
+                  <div>
+                    <Label htmlFor="message">Additional Message</Label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      className="input-professional"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Tell us about your trip, special requests, or questions..."
+                      rows={4}
+                    />
+                  </div>
+
+                  <Button 
+                    onClick={handleSubmit}
+                    className="w-full btn-ocean text-lg py-6"
+                    disabled={!formData.name || !formData.email || !formData.checkIn}
+                  >
+                    <MessageCircle className="w-5 h-5 mr-2" />
+                    Send Booking Inquiry via WhatsApp
+                  </Button>
                 </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Room Overview & Contact Info */}
+          <div className="space-y-8">
+            {/* Room Availability Overview */}
+            <Card className="card-professional">
+              <CardHeader>
+                <CardTitle className="text-xl">Room Availability</CardTitle>
+                <p className="text-gray-600">Current availability for August-September 2025</p>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {Object.entries(roomAvailability).map(([roomName, room]) => (
+                    <div key={roomName} className="border rounded-lg p-4">
+                      <div className="flex justify-between items-start mb-2">
+                        <h4 className="font-semibold">{roomName}</h4>
+                        <Badge className="bg-tropical-green/20 text-tropical-green">
+                          Available {room.availableFrom}
+                        </Badge>
+                      </div>
+                      <div className="grid grid-cols-2 gap-4 mb-3">
+                        <div>
+                          <p className="text-sm text-gray-600">Monthly</p>
+                          <p className="font-bold text-ocean-blue">₱{room.price.toLocaleString()}</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-gray-600">Nightly</p>
+                          <p className="font-semibold">₱{room.priceNightly.toLocaleString()}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-4 text-sm text-gray-600 mb-2">
+                        <span className="flex items-center gap-1">
+                          <Users className="w-4 h-4" />
+                          Max {room.maxGuests} guest{room.maxGuests > 1 ? 's' : ''}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Wifi className="w-4 h-4" />
+                          High-speed WiFi
+                        </span>
+                      </div>
+                      <div className="flex flex-wrap gap-1">
+                        {room.features.slice(0, 3).map((feature, index) => (
+                          <Badge key={index} variant="outline" className="text-xs">
+                            {feature}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Quick Contact Methods */}
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold text-foreground mb-6">
+                Get in Touch with Ali
+              </h3>
+              
+              {contactMethods.map((method, index) => (
+                <Card 
+                  key={index}
+                  className={`cursor-pointer transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1 ${
+                    method.primary ? 'border-ocean-blue border-2 bg-ocean-blue/10' : 'card-professional'
+                  }`}
+                  onClick={method.action}
+                >
+                  <CardContent className="p-4">
+                    <div className="flex items-center space-x-4">
+                      <div className={`p-3 rounded-lg ${
+                        method.primary ? 'bg-ocean-blue text-white' : 'bg-ocean-blue/10 text-ocean-blue'
+                      }`}>
+                        {method.icon}
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center space-x-2">
+                          <h4 className="font-semibold text-foreground">{method.title}</h4>
+                          {method.primary && (
+                            <Badge className="bg-ocean-blue text-white border-none text-xs">
+                              Best Choice
+                            </Badge>
+                          )}
+                        </div>
+                        <p className="text-ocean-blue font-medium">{method.value}</p>
+                        <p className="text-sm text-gray-600">{method.description}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
-          </div>
 
-          {/* Professional Headlines */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-white drop-shadow-lg">
-              Salamat Villa
-            </span>
-            <span className="block text-orange-300 drop-shadow-lg">
-              Siargao
-            </span>
-          </h1>
-
-          <h2 className="text-xl md:text-2xl mb-8 text-cyan-100 leading-relaxed font-medium">
-            Where Modern Comfort Meets Island Adventure
-          </h2>
-
-          <p className="text-lg mb-10 text-white/90 max-w-3xl leading-relaxed">
-            Perfect for digital nomads and surf enthusiasts. High-speed WiFi, spacious rooms with jungle views, 
-            and prime location - 5 minutes to Cloud 9 surf break, away from party noise.
-          </p>
-
-          {/* Professional Feature Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-            <div className="flex flex-col items-center text-center p-3 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
-              <Wifi className="w-6 h-6 mb-2 text-cyan-300" />
-              <span className="text-white/90 text-sm font-medium">High-Speed WiFi</span>
-              <span className="text-white/70 text-xs">100+ Mbps</span>
-            </div>
-            <div className="flex flex-col items-center text-center p-3 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
-              <svg className="w-6 h-6 mb-2 text-orange-300" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2l8 4v6c0 5.5-3.8 10.7-9 12C5.8 22.7 2 17.5 2 12V6l10-4z"/>
-              </svg>
-              <span className="text-white/90 text-sm font-medium">5min to Cloud 9</span>
-              <span className="text-white/70 text-xs">World-class surf</span>
-            </div>
-            <div className="flex flex-col items-center text-center p-3 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
-              <Shield className="w-6 h-6 mb-2 text-green-300" />
-              <span className="text-white/90 text-sm font-medium">24/7 Support</span>
-              <span className="text-white/70 text-xs">Local assistance</span>
-            </div>
-            <div className="flex flex-col items-center text-center p-3 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
-              <Users className="w-6 h-6 mb-2 text-purple-300" />
-              <span className="text-white/90 text-sm font-medium">Community</span>
-              <span className="text-white/70 text-xs">Digital nomads</span>
-            </div>
-          </div>
-
-          {/* Professional Pricing Highlight */}
-          <div className="bg-white/15 backdrop-blur-md rounded-xl p-6 mb-10 border border-white/20 max-w-2xl">
-            <div className="flex justify-between items-center mb-4">
-              <div>
-                <Badge className="bg-orange-500/20 text-orange-200 border border-orange-400/30 mb-2">
-                  Peak Surf Season
-                </Badge>
-                <div className="text-2xl font-bold text-white">
-                  ₱28,000<span className="text-base font-normal text-white/80">/month</span>
+            {/* Quick Facts */}
+            <Card className="bg-ocean-blue/10 card-professional">
+              <CardHeader>
+                <CardTitle className="text-xl">Quick Facts</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  {quickFacts.map((fact, index) => (
+                    <div key={index} className="flex items-center space-x-3">
+                      <div className="text-green-600">
+                        {fact.icon}
+                      </div>
+                      <span className="text-gray-700">{fact.text}</span>
+                    </div>
+                  ))}
                 </div>
-                <div className="text-white/70 text-sm">Perfect for digital nomads • All utilities included</div>
-              </div>
-              <div className="text-right">
-                <div className="text-white/80 text-sm">Daily from</div>
-                <div className="text-lg font-semibold text-cyan-200">₱1,100</div>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-3 gap-4 text-center text-sm">
-              <div>
-                <Star className="w-4 h-4 mx-auto mb-1 text-yellow-300" />
-                <div className="text-white/90 font-medium">4.9★</div>
-                <div className="text-white/60 text-xs">Rating</div>
-              </div>
-              <div>
-                <TrendingUp className="w-4 h-4 mx-auto mb-1 text-green-300" />
-                <div className="text-white/90 font-medium">70%</div>
-                <div className="text-white/60 text-xs">Extend stay</div>
-              </div>
-              <div>
-                <Users className="w-4 h-4 mx-auto mb-1 text-blue-300" />
-                <div className="text-white/90 font-medium">75%</div>
-                <div className="text-white/60 text-xs">Digital nomads</div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           </div>
+        </div>
 
-          {/* Professional Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-8">
-            <Button 
-              size="lg"
-              className="bg-cyan-600 hover:bg-cyan-700 text-white shadow-lg text-lg px-8 py-3 border border-cyan-500 transition-all duration-300"
-              onClick={() => window.open('https://wa.me/639083339477?text=Hi Ali! I\'m interested in booking a room at Salamat Villa. Can you help me with availability?', '_blank')}
-            >
-              <MessageCircle className="w-5 h-5 mr-2" />
-              Book via WhatsApp
-            </Button>
-            
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="bg-white/10 backdrop-blur-sm border border-white/30 text-white hover:bg-white/20 text-lg px-8 py-3 transition-all duration-300"
-              onClick={() => scrollToSection('rooms')}
-            >
-              View Rooms & Pricing
-            </Button>
-          </div>
-
-          {/* Professional Availability Notice */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 text-white/90">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="font-medium text-cyan-200">Available Now</span>
+        {/* Final CTA */}
+        <div className="text-center mt-16">
+          <div className="card-professional rounded-2xl p-8 max-w-4xl mx-auto">
+            <h3 className="text-3xl font-bold text-foreground mb-4">
+              Your Tropical Paradise Awaits
+            </h3>
+            <p className="text-xl text-gray-700 mb-6">
+              Don't miss out on the authentic Siargao experience. Book now for August-September 2025!
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                size="lg"
+                className="btn-ocean shadow-lg"
+                onClick={() => window.open('https://wa.me/639083339477?text=Hi Ali! I want to book a room at Salamat Villa ASAP!', '_blank')}
+              >
+                <MessageCircle className="w-5 h-5 mr-2" />
+                Book Now - WhatsApp Ali
+              </Button>
+              <Button 
+                variant="outline"
+                size="lg"
+                className="border-ocean-blue text-ocean-blue hover:bg-ocean-blue hover:text-white"
+                onClick={() => window.open('tel:+639083339477', '_blank')}
+              >
+                <Phone className="w-5 h-5 mr-2" />
+                Call Ali Directly
+              </Button>
             </div>
-            <span className="text-white/80 text-sm">
-              Rooms available August 7th & 15th • Perfect timing for surf season
-            </span>
           </div>
         </div>
       </div>
-
-      {/* Professional Floating Arrow */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <button 
-          onClick={() => scrollToSection('rooms')}
-          className="text-white/60 hover:text-white transition-colors p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </button>
-      </div>
-
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% { 
-            transform: translateY(0px) rotate(0deg); 
-          }
-          50% { 
-            transform: translateY(-10px) rotate(5deg); 
-          }
-        }
-        
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-      `}</style>
     </section>
   );
 };
 
-export default Hero;
+export default Contact;

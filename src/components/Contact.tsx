@@ -251,13 +251,13 @@ Looking forward to hearing from you!`;
   const estimatedCost = getEstimatedCost();
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-blue-50 to-green-50">
+    <section id="contact" className="py-20 section-tropical-light">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Book Your 
-            <span className="text-green-600"> Paradise</span>
+            <span className="text-ocean-blue"> Paradise</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Ready to experience authentic tropical living? Check availability and book your perfect Siargao stay

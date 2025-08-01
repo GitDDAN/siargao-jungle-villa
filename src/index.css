@@ -2,102 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Professional Tropical Design System - Refined for Digital Nomads */
+/* Professional Tropical Design System - Clean & Credible */
 
 /* Enhanced text shadows for better readability */
 .text-shadow {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .text-shadow-lg {
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
 }
 
 @layer base {
   :root {
-    /* Professional tropical palette - refined and readable */
-    --background: 255 255 255; /* Pure white background for readability */
+    /* Professional tropical palette - clean and readable */
+    --background: 255 255 255; /* Pure white background */
     --foreground: 15 23 42; /* Dark slate for excellent readability */
 
-    /* Card colors with subtle tropical touches */
-    --card: 255 255 255; /* Pure white cards */
+    /* Card colors - clean white */
+    --card: 255 255 255;
     --card-foreground: 15 23 42;
 
     --popover: 255 255 255;
     --popover-foreground: 15 23 42;
 
     /* Primary: Professional ocean blue */
-    --primary: 6 182 212; /* Cyan-600 - professional but tropical */
+    --primary: 6 182 212; /* Cyan-600 - professional ocean blue */
     --primary-foreground: 255 255 255;
 
-    /* Secondary: Subtle sandy tones */
-    --secondary: 248 250 252; /* Very light blue-gray */
+    /* Secondary: Clean neutrals */
+    --secondary: 241 245 249; /* Slate-100 */
     --secondary-foreground: 15 23 42;
 
-    /* Muted: Soft neutral grays */
-    --muted: 241 245 249;
-    --muted-foreground: 100 116 139;
+    /* Muted: Subtle grays */
+    --muted: 226 232 240; /* Slate-200 */
+    --muted-foreground: 71 85 105; /* Slate-600 */
 
-    /* Accent: Professional coral/orange */
-    --accent: 234 88 12; /* Orange-600 - warm but professional */
+    /* Accent: Professional coral */
+    --accent: 234 88 12; /* Orange-600 - warm coral */
     --accent-foreground: 255 255 255;
 
     /* Destructive colors */
     --destructive: 220 38 38;
     --destructive-foreground: 255 255 255;
 
-    /* Subtle borders and inputs */
-    --border: 226 232 240;
+    /* Clean borders and inputs */
+    --border: 226 232 240; /* Slate-200 */
     --input: 226 232 240;
     --ring: 6 182 212;
 
-    /* Refined Tropical Color Palette - Professional */
-    --ocean-blue: 6 182 212; /* Cyan-600 - professional ocean */
-    --ocean-blue-light: 165 243 252; /* Cyan-200 - light accent */
-    --ocean-blue-dark: 8 145 178; /* Cyan-700 - deep professional */
-    --ocean-blue-darker: 14 116 144; /* Cyan-800 - darker professional */
+    /* Professional Tropical Color Palette */
+    --ocean-blue: 6 182 212; /* Primary ocean blue */
+    --ocean-blue-light: 125 211 252; /* Light ocean accent */
+    --ocean-blue-dark: 8 145 178; /* Deep ocean */
     
-    --coral-orange: 234 88 12; /* Orange-600 - warm professional */
-    --coral-orange-light: 254 215 170; /* Orange-200 - subtle accent */
-    --coral-orange-dark: 194 65 12; /* Orange-700 - deep warm */
+    --coral-orange: 234 88 12; /* Professional coral */
+    --coral-orange-light: 254 215 170; /* Light coral accent */
     
-    --tropical-green: 5 150 105; /* Emerald-600 - professional green */
-    --tropical-green-light: 167 243 208; /* Emerald-200 - light accent */
-    --tropical-green-dark: 4 120 87; /* Emerald-700 - deep green */
+    --tropical-green: 5 150 105; /* Success green only */
+    --tropical-green-light: 167 243 208; /* Light success accent */
     
-    --sand-neutral: 248 250 252; /* Slate-50 - neutral base */
-    --sand-warm: 254 252 232; /* Yellow-50 - warm neutral */
-    --sand-beige: 245 245 244; /* Stone-100 - subtle beige */
+    --neutral-50: 248 250 252; /* Slate-50 */
+    --neutral-100: 241 245 249; /* Slate-100 */
+    --neutral-200: 226 232 240; /* Slate-200 */
     
-    --palm-green: 22 163 74; /* Green-600 - palm accent */
-    --white-foam: 248 250 252; /* Clean foam white */
-    --sunrise: 251 146 60; /* Orange-400 - sunrise accent */
-    
-    /* Professional gradients - subtle and refined */
+    /* Professional gradients - subtle */
     --gradient-ocean: linear-gradient(135deg, hsl(var(--ocean-blue)), hsl(var(--ocean-blue-dark)));
-    --gradient-coral: linear-gradient(135deg, hsl(var(--coral-orange)), hsl(var(--sunrise)));
-    --gradient-tropical: linear-gradient(135deg, hsl(var(--tropical-green)), hsl(var(--ocean-blue)));
-    --gradient-professional: linear-gradient(135deg, hsl(var(--ocean-blue-dark)), hsl(var(--tropical-green)));
-    --gradient-neutral: linear-gradient(135deg, hsl(var(--sand-neutral)), hsl(var(--sand-warm)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--ocean-blue-darker)), hsl(var(--coral-orange-light)));
-    --gradient-sand: linear-gradient(135deg, hsl(var(--sand-neutral)), hsl(var(--white-foam)));
-    --gradient-warm: linear-gradient(135deg, hsl(var(--coral-orange-light)), hsl(var(--sand-warm)));
+    --gradient-coral: linear-gradient(135deg, hsl(var(--coral-orange)), hsl(var(--coral-orange-light)));
+    --gradient-hero: linear-gradient(135deg, rgba(6, 182, 212, 0.9), rgba(8, 145, 178, 0.9));
+    --gradient-tropical-overlay: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(5, 150, 105, 0.1));
     
-    /* Professional shadows - subtle */
-    --shadow-professional: 0 4px 15px -3px rgb(6 182 212 / 0.1);
-    --shadow-ocean: 0 10px 30px -5px rgb(6 182 212 / 0.2);
-    --shadow-warm: 0 4px 15px -3px rgb(234 88 12 / 0.1);
-    --shadow-coral: 0 8px 25px -5px rgb(234 88 12 / 0.15);
-    --shadow-tropical: 0 10px 35px -5px rgb(5 150 105 / 0.2);
-    --shadow-soft: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-    
-    /* Wave and animation properties */
-    --wave-duration: 6s;
-    --wave-amplitude: 15px;
+    /* Clean shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    /* Sidebar with professional tropical theme */
+    /* Sidebar */
     --sidebar-background: 248 250 252;
     --sidebar-foreground: 51 65 85;
     --sidebar-primary: 6 182 212;
@@ -109,7 +93,7 @@
   }
 
   .dark {
-    /* Professional dark mode with tropical accents */
+    /* Professional dark mode */
     --background: 15 23 42;
     --foreground: 248 250 252;
 
@@ -119,7 +103,7 @@
     --popover: 30 41 59;
     --popover-foreground: 248 250 252;
 
-    --primary: 34 211 238; /* Cyan-400 for dark mode */
+    --primary: 34 211 238;
     --primary-foreground: 15 23 42;
 
     --secondary: 51 65 85;
@@ -128,7 +112,7 @@
     --muted: 51 65 85;
     --muted-foreground: 148 163 184;
 
-    --accent: 251 146 60; /* Orange-400 for dark mode */
+    --accent: 251 146 60;
     --accent-foreground: 15 23 42;
 
     --destructive: 239 68 68;
@@ -138,9 +122,7 @@
     --input: 51 65 85;
     --ring: 34 211 238;
     
-    /* Dark mode tropical colors */
     --ocean-blue: 34 211 238;
-    --ocean-blue-light: 125 211 252;
     --coral-orange: 251 146 60;
     --tropical-green: 52 211 153;
     
@@ -163,38 +145,39 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  p {
+    line-height: 1.6;
   }
 }
 
-/* Refined Animations - Professional */
+/* Professional Animations */
 @keyframes gentle-float {
   0%, 100% { 
-    transform: translateY(0px) rotate(0deg) scale(1); 
-  }
-  25% { 
-    transform: translateY(-8px) rotate(1deg) scale(1.01); 
+    transform: translateY(0px) rotate(0deg); 
   }
   50% { 
-    transform: translateY(-12px) rotate(0deg) scale(1.02); 
-  }
-  75% { 
-    transform: translateY(-6px) rotate(-1deg) scale(1.01); 
+    transform: translateY(-8px) rotate(1deg); 
   }
 }
 
 @keyframes subtle-wave {
   0%, 100% { 
-    transform: translateX(0px) translateY(0px) scaleY(1); 
+    transform: translateX(0px) scaleX(1); 
   }
-  33% { 
-    transform: translateX(-15px) translateY(-5px) scaleY(1.02); 
-  }
-  66% { 
-    transform: translateX(-8px) translateY(-3px) scaleY(0.98); 
+  50% { 
+    transform: translateX(-10px) scaleX(1.02); 
   }
 }
 
-@keyframes professional-fade {
+@keyframes fade-in {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -216,133 +199,24 @@
   }
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes bounce-gentle {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes tropical-pulse {
-  0%, 100% { 
-    opacity: 1; 
-    transform: scale(1); 
-  }
-  50% { 
-    opacity: 0.9; 
-    transform: scale(1.02); 
-  }
-}
-
-/* Professional Animation Classes */
-.animate-gentle-float {
-  animation: gentle-float 8s ease-in-out infinite;
-}
-
+/* Animation Classes */
 .animate-float {
   animation: gentle-float 6s ease-in-out infinite;
-}
-
-.animate-subtle-wave {
-  animation: subtle-wave 12s ease-in-out infinite;
 }
 
 .animate-wave {
   animation: subtle-wave 8s ease-in-out infinite;
 }
 
-.animate-professional-fade {
-  animation: professional-fade 0.8s ease-out;
-}
-
 .animate-fade-in {
-  animation: fade-in 1s ease-out;
+  animation: fade-in 0.8s ease-out;
 }
 
 .animate-slide-in-right {
   animation: slide-in-right 0.8s ease-out;
 }
 
-.animate-bounce-gentle {
-  animation: bounce-gentle 2s ease-in-out infinite;
-}
-
-.animate-tropical-pulse {
-  animation: tropical-pulse 3s ease-in-out infinite;
-}
-
-/* Professional Utility Classes */
-.bg-gradient-ocean {
-  background: var(--gradient-ocean);
-}
-
-.bg-gradient-coral {
-  background: var(--gradient-coral);
-}
-
-.bg-gradient-tropical {
-  background: var(--gradient-tropical);
-}
-
-.bg-gradient-professional {
-  background: var(--gradient-professional);
-}
-
-.bg-gradient-neutral {
-  background: var(--gradient-neutral);
-}
-
-.bg-gradient-hero {
-  background: var(--gradient-hero);
-}
-
-.bg-gradient-sand {
-  background: var(--gradient-sand);
-}
-
-.bg-gradient-warm {
-  background: var(--gradient-warm);
-}
-
-.shadow-professional {
-  box-shadow: var(--shadow-professional);
-}
-
-.shadow-ocean {
-  box-shadow: var(--shadow-ocean);
-}
-
-.shadow-warm {
-  box-shadow: var(--shadow-warm);
-}
-
-.shadow-coral {
-  box-shadow: var(--shadow-coral);
-}
-
-.shadow-tropical {
-  box-shadow: var(--shadow-tropical);
-}
-
-.shadow-soft {
-  box-shadow: var(--shadow-soft);
-}
-
-/* Professional Color Utilities - Readable */
+/* Professional Color Utilities */
 .text-ocean-blue {
   color: hsl(var(--ocean-blue));
 }
@@ -371,10 +245,6 @@
   color: hsl(var(--tropical-green-light));
 }
 
-.text-sunrise {
-  color: hsl(var(--sunrise));
-}
-
 .bg-ocean-blue {
   background-color: hsl(var(--ocean-blue));
 }
@@ -387,28 +257,20 @@
   background-color: hsl(var(--coral-orange));
 }
 
-.bg-coral-orange-light {
-  background-color: hsl(var(--coral-orange-light));
-}
-
 .bg-tropical-green {
   background-color: hsl(var(--tropical-green));
 }
 
-.bg-sand-neutral {
-  background-color: hsl(var(--sand-neutral));
+.bg-neutral-50 {
+  background-color: hsl(var(--neutral-50));
 }
 
-.bg-sand-warm {
-  background-color: hsl(var(--sand-warm));
+.bg-neutral-100 {
+  background-color: hsl(var(--neutral-100));
 }
 
-.bg-sand-beige {
-  background-color: hsl(var(--sand-beige));
-}
-
-.bg-white-foam {
-  background-color: hsl(var(--white-foam));
+.bg-neutral-200 {
+  background-color: hsl(var(--neutral-200));
 }
 
 /* Border utilities */
@@ -424,293 +286,201 @@
   border-color: hsl(var(--tropical-green));
 }
 
+/* Gradient utilities */
+.bg-gradient-ocean {
+  background: var(--gradient-ocean);
+}
+
+.bg-gradient-coral {
+  background: var(--gradient-coral);
+}
+
+.bg-gradient-hero {
+  background: var(--gradient-hero);
+}
+
+.bg-gradient-tropical-overlay {
+  background: var(--gradient-tropical-overlay);
+}
+
 /* Professional Component Styles */
 
-/* Professional Tropical Cards */
+/* Clean Cards */
 .card-professional {
   background-color: white;
   border-radius: 0.75rem;
-  box-shadow: var(--shadow-soft);
-  border: 1px solid hsl(226 232 240);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow);
+  border: 1px solid hsl(var(--neutral-200));
+  transition: all 0.3s ease;
 }
 
 .card-professional:hover {
-  box-shadow: var(--shadow-professional);
+  box-shadow: var(--shadow-lg);
   border-color: hsl(var(--ocean-blue) / 0.3);
-  transform: translateY(-4px) scale(1.01);
-}
-
-.card-tropical {
-  background-color: white;
-  border-radius: 1rem;
-  box-shadow: var(--shadow-soft);
-  border: 1px solid hsl(var(--ocean-blue-light) / 0.2);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.card-tropical:hover {
-  box-shadow: var(--shadow-tropical);
-  border-color: hsl(var(--tropical-green) / 0.3);
-  transform: translateY(-6px) scale(1.02);
+  transform: translateY(-2px);
 }
 
 /* Professional Buttons */
 .btn-ocean {
-  background: linear-gradient(135deg, hsl(var(--ocean-blue)), hsl(var(--ocean-blue-dark)));
+  background: var(--gradient-ocean);
   color: white;
-  box-shadow: var(--shadow-professional);
-  border: 1px solid hsl(var(--ocean-blue));
+  box-shadow: var(--shadow);
+  border: none;
   transition: all 0.3s ease;
+  font-weight: 600;
 }
 
 .btn-ocean:hover {
-  background: linear-gradient(135deg, hsl(var(--ocean-blue-dark)), hsl(var(--tropical-green)));
-  box-shadow: var(--shadow-ocean);
-  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+  opacity: 0.95;
 }
 
 .btn-coral {
-  background: linear-gradient(135deg, hsl(var(--coral-orange)), hsl(var(--sunrise)));
+  background: var(--gradient-coral);
   color: white;
-  box-shadow: var(--shadow-warm);
-  border: 1px solid hsl(var(--coral-orange));
+  box-shadow: var(--shadow);
+  border: none;
   transition: all 0.3s ease;
+  font-weight: 600;
 }
 
 .btn-coral:hover {
-  background: linear-gradient(135deg, hsl(var(--sunrise)), hsl(var(--coral-orange-light)));
-  box-shadow: var(--shadow-coral);
-  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+  opacity: 0.95;
 }
 
-.btn-tropical {
-  background: linear-gradient(135deg, hsl(var(--tropical-green)), hsl(var(--ocean-blue)));
-  color: white;
-  box-shadow: var(--shadow-tropical);
-  border: 1px solid hsl(var(--tropical-green));
-  transition: all 0.3s ease;
-}
-
-.btn-tropical:hover {
-  background: linear-gradient(135deg, hsl(var(--ocean-blue)), hsl(var(--tropical-green-light)));
-  box-shadow: var(--shadow-ocean);
-  transform: translateY(-2px) scale(1.02);
-}
-
-/* Professional Navigation */
+/* Clean Navigation */
 .nav-professional {
-  background-color: rgb(255 255 255 / 0.95);
+  background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid hsl(226 232 240);
-  box-shadow: var(--shadow-soft);
+  border-bottom: 1px solid hsl(var(--neutral-200));
+  box-shadow: var(--shadow-sm);
 }
 
-.nav-tropical {
-  background-color: rgb(255 255 255 / 0.95);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid hsl(var(--ocean-blue-light) / 0.3);
-  box-shadow: var(--shadow-soft);
-}
-
-.nav-link-professional {
+.nav-link {
   color: hsl(var(--foreground));
   font-weight: 500;
   transition: color 0.3s ease;
   position: relative;
 }
 
-.nav-link-professional:hover {
+.nav-link:hover {
   color: hsl(var(--ocean-blue));
 }
 
-.nav-link-tropical {
-  color: hsl(var(--ocean-blue-dark));
-  font-weight: 500;
-  transition: all 0.3s;
-  position: relative;
-}
-
-.nav-link-tropical:hover {
-  color: hsl(var(--tropical-green));
-}
-
-.nav-link-professional::after,
-.nav-link-tropical::after {
+.nav-link::after {
   content: '';
   position: absolute;
   bottom: -2px;
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, hsl(var(--tropical-green)), hsl(var(--ocean-blue)));
+  background: hsl(var(--ocean-blue));
   transition: width 0.3s ease;
 }
 
-.nav-link-professional:hover::after,
-.nav-link-tropical:hover::after {
+.nav-link:hover::after {
   width: 100%;
 }
 
 /* Professional Sections */
+.section-clean {
+  background: white;
+}
+
 .section-neutral {
+  background: hsl(var(--neutral-50));
+}
+
+.section-tropical-light {
   background: linear-gradient(135deg, 
-    hsl(var(--sand-neutral)) 0%, 
-    hsl(var(--sand-warm)) 100%
+    hsl(var(--neutral-50)) 0%, 
+    rgba(6, 182, 212, 0.03) 50%, 
+    hsl(var(--neutral-50)) 100%
   );
 }
 
-.section-ocean {
-  background: linear-gradient(135deg, 
-    hsl(var(--ocean-blue-light) / 0.1) 0%, 
-    hsl(var(--white-foam)) 50%, 
-    hsl(var(--sand-neutral)) 100%
-  );
-}
-
-.section-coral {
-  background: linear-gradient(135deg, 
-    hsl(var(--coral-orange-light) / 0.2) 0%, 
-    hsl(var(--sand-beige)) 50%, 
-    hsl(var(--white-foam)) 100%
-  );
-}
-
-.section-tropical {
-  background: linear-gradient(135deg, 
-    hsl(var(--tropical-green-light) / 0.1) 0%, 
-    hsl(var(--ocean-blue-light) / 0.1) 50%, 
-    hsl(var(--white-foam)) 100%
-  );
-}
-
-/* Wave Divider Effects */
-.wave-divider {
+/* Subtle tropical patterns */
+.tropical-pattern {
   position: relative;
   overflow: hidden;
 }
 
-.wave-divider::before {
+.tropical-pattern::before {
   content: '';
   position: absolute;
   top: 0;
-  left: -50%;
-  width: 200%;
-  height: 100%;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.15' fill='%2306b6d4'/%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.25' fill='%2306b6d4'/%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%2306b6d4'/%3E%3C/svg%3E") repeat-x;
-  animation: subtle-wave 15s linear infinite;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(6, 182, 212, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(234, 88, 12, 0.05) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 /* Professional Forms */
 .input-professional {
-  border: 1px solid hsl(226 232 240);
+  border: 1px solid hsl(var(--neutral-200));
   background-color: white;
   border-radius: 0.5rem;
   padding: 0.75rem 1rem;
   transition: all 0.3s ease;
+  font-size: 0.875rem;
 }
 
 .input-professional:focus {
   border-color: hsl(var(--ocean-blue));
   box-shadow: 0 0 0 3px hsl(var(--ocean-blue) / 0.1);
+  outline: none;
 }
 
-.input-tropical {
-  border: 2px solid hsl(var(--ocean-blue-light) / 0.3);
-  background-color: rgb(255 255 255 / 0.8);
-  backdrop-filter: blur(4px);
-  border-radius: 0.75rem;
-  padding: 0.75rem 1rem;
-  transition: all 0.3s;
+/* Typography improvements */
+.heading-primary {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-.input-tropical:focus {
-  border-color: hsl(var(--tropical-green));
-  box-shadow: var(--shadow-tropical), 0 0 0 4px hsl(var(--tropical-green) / 0.2);
-  transform: translateY(-1px);
+.heading-secondary {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
-/* Professional Modal and Dialog */
-.modal-professional {
-  background-color: rgb(255 255 255 / 0.98);
-  backdrop-filter: blur(8px);
-  border: 1px solid hsl(226 232 240);
-  border-radius: 0.75rem;
-  box-shadow: var(--shadow-professional);
-}
-
-.modal-tropical {
-  background-color: rgb(255 255 255 / 0.95);
-  backdrop-filter: blur(16px);
-  border: 1px solid hsl(var(--ocean-blue-light) / 0.3);
-  border-radius: 1rem;
-  box-shadow: var(--shadow-tropical);
-}
-
-/* Tropical Loading and Skeleton Effects */
-.shimmer-tropical {
-  background: linear-gradient(
-    90deg,
-    hsl(var(--sand-neutral)) 0%,
-    hsl(var(--ocean-blue-light) / 0.3) 50%,
-    hsl(var(--sand-neutral)) 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
+.text-large {
+  font-size: 1.125rem;
+  line-height: 1.6;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .card-professional:hover,
-  .card-tropical:hover {
-    transform: translateY(-2px) scale(1.01);
+  .card-professional:hover {
+    transform: translateY(-1px);
   }
   
   .btn-ocean:hover,
-  .btn-coral:hover,
-  .btn-tropical:hover {
-    transform: translateY(-1px) scale(1.01);
-  }
-}
-
-/* Print Styles */
-@media print {
-  .animate-gentle-float,
-  .animate-float,
-  .animate-subtle-wave,
-  .animate-wave,
-  .animate-tropical-pulse {
-    animation: none !important;
-  }
-  
-  .shadow-professional,
-  .shadow-ocean,
-  .shadow-coral,
-  .shadow-tropical,
-  .shadow-warm {
-    box-shadow: none !important;
+  .btn-coral:hover {
+    transform: translateY(-0.5px);
   }
 }
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .animate-gentle-float,
   .animate-float,
-  .animate-subtle-wave,
   .animate-wave,
-  .animate-tropical-pulse,
-  .animate-professional-fade,
   .animate-fade-in,
-  .animate-slide-in-right,
-  .animate-bounce-gentle {
+  .animate-slide-in-right {
     animation: none !important;
   }
   
   .card-professional,
-  .card-tropical,
   .btn-ocean,
-  .btn-coral,
-  .btn-tropical {
+  .btn-coral {
     transition: none !important;
   }
 }
@@ -721,19 +491,21 @@
     color: hsl(var(--ocean-blue-dark));
   }
   
-  .text-coral-orange {
-    color: hsl(var(--coral-orange-dark));
+  .card-professional {
+    border: 2px solid hsl(var(--foreground));
+  }
+}
+
+/* Print styles */
+@media print {
+  .animate-float,
+  .animate-wave {
+    animation: none !important;
   }
   
   .card-professional,
-  .card-tropical {
-    border: 2px solid hsl(var(--foreground));
-  }
-  
-  .bg-gradient-ocean,
-  .bg-gradient-coral,
-  .bg-gradient-tropical {
-    background: hsl(var(--background));
-    border: 2px solid hsl(var(--foreground));
+  .btn-ocean,
+  .btn-coral {
+    box-shadow: none !important;
   }
 }

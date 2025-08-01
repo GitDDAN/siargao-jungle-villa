@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,11 +18,65 @@ import {
   CheckCircle,
   AlertCircle,
   Wifi,
-  Bath,
-  Bed
+  Globe
 } from "lucide-react";
 
+// The new component to display the list of current guests.
+// This data can be easily updated or fetched from a real-time source.
+const CurrentGuests = () => {
+  // Static guest data as per your request
+  const initialGuests = [
+    { name: "Ali", country: "Philippines", age: 29 },
+    { name: "Daniel", country: "Denmark", age: 40 },
+    { name: "Joma", country: "Philippines", age: 21 },
+    { name: "Sam", country: "England", age: 27 },
+    { name: "Anna", country: "Canada", age: 30 }
+  ];
+
+  const [guests] = useState(initialGuests);
+
+  return (
+    <Card className="card-professional">
+      <CardHeader>
+        <div className="flex items-center gap-2">
+          <Users className="w-6 h-6 text-ocean-blue" />
+          <CardTitle className="text-xl">
+            Current Guests
+          </CardTitle>
+        </div>
+        <p className="text-sm text-gray-600">
+          Meet the people currently enjoying their stay.
+        </p>
+      </CardHeader>
+      <CardContent>
+        <div className="grid grid-cols-1 gap-4">
+          {guests.map((guest, index) => (
+            <div key={index} className="flex items-center justify-between p-3 border rounded-lg bg-gray-50">
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 bg-ocean-blue/20 rounded-full flex items-center justify-center text-ocean-blue font-bold">
+                  {guest.name.charAt(0)}
+                </div>
+                <div>
+                  <p className="font-semibold">{guest.name}</p>
+                  <p className="text-xs text-gray-500">Age {guest.age}</p>
+                </div>
+              </div>
+              <Badge variant="secondary" className="flex items-center gap-1">
+                <Globe className="w-3 h-3" />
+                {guest.country}
+              </Badge>
+            </div>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
+// The main Contact component with the form and booking information.
+// It has been updated to include the CurrentGuests component.
 const Contact = () => {
+  // State to manage form data
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,10 +88,11 @@ const Contact = () => {
     message: ""
   });
 
+  // State for availability alerts and available rooms
   const [availabilityAlert, setAvailabilityAlert] = useState("");
   const [selectedRooms, setSelectedRooms] = useState([]);
 
-  // Room availability data based on your market analysis
+  // Room availability data
   const roomAvailability = {
     "Ensuite Master": {
       price: 33000,
@@ -65,6 +120,7 @@ const Contact = () => {
     }
   };
 
+  // Handler for input changes to update form state
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -78,6 +134,7 @@ const Contact = () => {
     }
   };
 
+  // Function to check room availability based on check-in date
   const checkRoomAvailability = (data) => {
     if (!data.checkIn) return;
 
@@ -104,6 +161,7 @@ const Contact = () => {
     setSelectedRooms(availableRooms);
   };
 
+  // Function to determine the badge status for a room
   const getRoomStatusBadge = (roomName) => {
     if (!formData.checkIn) return null;
     
@@ -117,6 +175,7 @@ const Contact = () => {
     }
   };
 
+  // Function to calculate the duration of the stay
   const calculateStayDuration = () => {
     if (!formData.checkIn || !formData.checkOut) return null;
     
@@ -128,6 +187,7 @@ const Contact = () => {
     return diffDays > 0 ? diffDays : null;
   };
 
+  // Function to calculate the estimated cost
   const getEstimatedCost = () => {
     const duration = calculateStayDuration();
     if (!duration || !formData.roomPreference) return null;
@@ -155,8 +215,8 @@ const Contact = () => {
     }
   };
 
+  // Handler for the WhatsApp booking submission
   const handleSubmit = () => {
-    
     const duration = calculateStayDuration();
     const cost = getEstimatedCost();
     
@@ -193,6 +253,7 @@ Looking forward to hearing from you!`;
     window.open(`https://wa.me/639083339477?text=${encodedMessage}`, '_blank');
   };
 
+  // Pre-defined contact methods
   const contactMethods = [
     {
       icon: <MessageCircle className="w-6 h-6" />,
@@ -228,6 +289,7 @@ Looking forward to hearing from you!`;
     }
   ];
 
+  // Pre-defined quick facts
   const quickFacts = [
     {
       icon: <Calendar className="w-5 h-5" />,
@@ -477,7 +539,7 @@ Looking forward to hearing from you!`;
             </Card>
           </div>
 
-          {/* Room Overview & Contact Info */}
+          {/* Room Overview, Contact Info, and Current Guests */}
           <div className="space-y-8">
             {/* Room Availability Overview */}
             <Card className="card-professional">
@@ -527,6 +589,9 @@ Looking forward to hearing from you!`;
                 </div>
               </CardContent>
             </Card>
+
+            {/* NEW Current Guests Component */}
+            <CurrentGuests />
 
             {/* Quick Contact Methods */}
             <div className="space-y-4">
@@ -623,4 +688,50 @@ Looking forward to hearing from you!`;
   );
 };
 
-export default Contact;
+// Main App component to render the Contact component.
+// In a typical React app, this would be your main entry point.
+const App = () => {
+  return (
+    <div className="App bg-gray-50 min-h-screen font-inter">
+      {/* Assuming you have a hero section similar to the image,
+          here is some code to improve text visibility. */}
+      {/* You would place this content in a Hero section component, not here */}
+      <style>{`
+        .hero-section {
+          position: relative;
+          background-image: url('https://placehold.co/1920x1080/000000/FFFFFF?text=Placeholder+Image');
+          background-size: cover;
+          background-position: center;
+          color: white;
+          padding: 8rem 2rem;
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+        .hero-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.4);
+        }
+      `}</style>
+      
+      {/* Example of how a hero section with improved text visibility might look */}
+      <div className="hero-section relative">
+        <div className="hero-overlay"></div>
+        <div className="relative z-10 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Salamat Villa Siargao</h1>
+          <p className="text-lg md:text-2xl mb-8">Where Modern Comfort Meets Island Adventure</p>
+          <div className="flex justify-center gap-4">
+            <Button size="lg" className="bg-ocean-blue text-white hover:bg-ocean-blue/80">Book via WhatsApp</Button>
+            <Button variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-ocean-blue">View Rooms & Pricing</Button>
+          </div>
+        </div>
+      </div>
+
+      <Contact />
+    </div>
+  );
+};
+
+export default App;

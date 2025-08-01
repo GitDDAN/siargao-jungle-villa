@@ -14,85 +14,94 @@ const Hero = () => {
 
   return (
     <section id="hero" className="min-h-screen relative overflow-hidden">
-      {/* Wave Graphics - Left Side with Surf Elements */}
+      {/* Ocean Wave Graphics - Left Side */}
       <div className="absolute left-0 top-1/4 opacity-20 pointer-events-none">
-        <svg width="200" height="400" viewBox="0 0 200 400" className="text-tropical-green-light">
+        <svg width="200" height="400" viewBox="0 0 200 400" className="text-ocean-blue-light">
           <path
             d="M0 50 Q50 0 100 50 T200 50 V100 Q150 150 100 100 T0 100 Z"
             fill="currentColor"
-            opacity="0.3"
+            opacity="0.4"
+            className="animate-wave"
           />
           <path
             d="M0 150 Q50 100 100 150 T200 150 V200 Q150 250 100 200 T0 200 Z"
             fill="currentColor"
-            opacity="0.2"
+            opacity="0.3"
+            className="animate-wave"
+            style={{animationDelay: '1s'}}
           />
           <path
             d="M0 250 Q50 200 100 250 T200 250 V300 Q150 350 100 300 T0 300 Z"
             fill="currentColor"
-            opacity="0.15"
+            opacity="0.2"
+            className="animate-wave"
+            style={{animationDelay: '2s'}}
           />
         </svg>
       </div>
 
       {/* Surfboard Graphics - Left Side */}
-      <div className="absolute left-8 top-1/2 opacity-10 pointer-events-none animate-float">
-        <svg width="60" height="200" viewBox="0 0 60 200" className="text-white transform rotate-12">
-          <ellipse cx="30" cy="100" rx="8" ry="95" fill="currentColor" opacity="0.6"/>
-          <ellipse cx="30" cy="100" rx="6" ry="85" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.4"/>
+      <div className="absolute left-8 top-1/2 opacity-15 pointer-events-none animate-float">
+        <svg width="60" height="200" viewBox="0 0 60 200" className="text-sunset-orange transform rotate-12">
+          <ellipse cx="30" cy="100" rx="8" ry="95" fill="currentColor" opacity="0.7"/>
+          <ellipse cx="30" cy="100" rx="6" ry="85" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.5"/>
+          <rect x="27" y="90" width="6" height="20" fill="currentColor" opacity="0.8" rx="3"/>
         </svg>
       </div>
 
-      {/* Wave Graphics - Right Side with Surf Elements */}
+      {/* Ocean Wave Graphics - Right Side */}
       <div className="absolute right-0 top-1/3 opacity-15 pointer-events-none transform rotate-180">
-        <svg width="150" height="300" viewBox="0 0 150 300" className="text-white">
+        <svg width="150" height="300" viewBox="0 0 150 300" className="text-ocean-blue-light">
           <path
             d="M150 40 Q100 0 50 40 T-50 40 V80 Q0 120 50 80 T150 80 Z"
             fill="currentColor"
-            opacity="0.2"
+            opacity="0.3"
+            className="animate-wave"
           />
           <path
             d="M150 120 Q100 80 50 120 T-50 120 V160 Q0 200 50 160 T150 160 Z"
             fill="currentColor"
-            opacity="0.15"
+            opacity="0.2"
+            className="animate-wave"
+            style={{animationDelay: '1.5s'}}
           />
         </svg>
       </div>
 
-      {/* Palm Tree Silhouette - Right Side */}
-      <div className="absolute right-12 top-20 opacity-8 pointer-events-none">
-        <svg width="80" height="120" viewBox="0 0 80 120" className="text-tropical-green-light">
-          <path d="M35 100 Q38 80 40 60 Q42 40 40 20" stroke="currentColor" strokeWidth="3" fill="none" opacity="0.3"/>
+      {/* Palm Tree Silhouette - Right Side (minimal green accent) */}
+      <div className="absolute right-12 top-20 opacity-10 pointer-events-none">
+        <svg width="80" height="120" viewBox="0 0 80 120" className="text-palm-green">
+          <path d="M35 100 Q38 80 40 60 Q42 40 40 20" stroke="currentColor" strokeWidth="3" fill="none" opacity="0.4"/>
           <path d="M40 25 Q20 15 10 5 M40 25 Q25 10 15 15 M40 25 Q55 10 65 15 M40 25 Q60 15 70 5" 
-                stroke="currentColor" strokeWidth="2" fill="none" opacity="0.4"/>
+                stroke="currentColor" strokeWidth="2" fill="none" opacity="0.5"/>
         </svg>
       </div>
 
-      {/* Floating Elements with Surf Theme */}
+      {/* Floating Ocean Elements */}
       <div className="absolute top-20 right-20 opacity-30 animate-float">
-        <div className="w-3 h-3 bg-tropical-green-light rounded-full"></div>
+        <div className="w-3 h-3 bg-ocean-blue-light rounded-full"></div>
       </div>
-      <div className="absolute top-40 left-20 opacity-20 animate-float" style={{animationDelay: '1s'}}>
-        <div className="w-2 h-2 bg-white rounded-full"></div>
+      <div className="absolute top-40 left-20 opacity-25 animate-float" style={{animationDelay: '1s'}}>
+        <div className="w-2 h-2 bg-sunset-orange-light rounded-full"></div>
       </div>
       <div className="absolute bottom-40 right-40 opacity-25 animate-float" style={{animationDelay: '2s'}}>
-        <div className="w-4 h-4 bg-tropical-green-light rounded-full"></div>
+        <div className="w-4 h-4 bg-ocean-blue-light rounded-full"></div>
       </div>
       
-      {/* Surf Wave Pattern - Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 opacity-10 pointer-events-none">
-        <svg width="100%" height="60" viewBox="0 0 1200 60" className="text-white" preserveAspectRatio="none">
-          <path d="M0 30 Q150 0 300 30 T600 30 T900 30 T1200 30 V60 H0 Z" fill="currentColor" opacity="0.3"/>
-          <path d="M0 40 Q200 15 400 40 T800 40 T1200 40 V60 H0 Z" fill="currentColor" opacity="0.2"/>
+      {/* Enhanced Surf Wave Pattern - Bottom */}
+      <div className="absolute bottom-0 left-0 right-0 opacity-15 pointer-events-none">
+        <svg width="100%" height="80" viewBox="0 0 1200 80" className="text-white-foam" preserveAspectRatio="none">
+          <path d="M0 40 Q150 0 300 40 T600 40 T900 40 T1200 40 V80 H0 Z" fill="currentColor" opacity="0.4" className="animate-wave"/>
+          <path d="M0 55 Q200 20 400 55 T800 55 T1200 55 V80 H0 Z" fill="currentColor" opacity="0.3" className="animate-wave" style={{animationDelay: '0.5s'}}/>
+          <path d="M0 65 Q100 35 200 65 T400 65 T600 65 T800 65 T1000 65 T1200 65 V80 H0 Z" fill="currentColor" opacity="0.2" className="animate-wave" style={{animationDelay: '1s'}}/>
         </svg>
       </div>
 
-      {/* Coconut Tree Elements */}
+      {/* Seashell Elements */}
       <div className="absolute top-32 right-32 opacity-12 pointer-events-none animate-float" style={{animationDelay: '3s'}}>
-        <svg width="40" height="60" viewBox="0 0 40 60" className="text-tropical-green-light">
-          <circle cx="20" cy="15" r="3" fill="currentColor" opacity="0.4"/>
-          <circle cx="25" cy="18" r="2.5" fill="currentColor" opacity="0.3"/>
-          <circle cx="15" cy="20" r="2" fill="currentColor" opacity="0.3"/>
+        <svg width="40" height="40" viewBox="0 0 40 40" className="text-sand-beige-dark">
+          <path d="M20 5 L30 25 Q25 35 20 30 Q15 35 10 25 Z" fill="currentColor" opacity="0.5"/>
+          <circle cx="20" cy="15" r="2" fill="currentColor" opacity="0.7"/>
         </svg>
       </div>
 
@@ -108,7 +117,7 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-4 py-32 flex items-center min-h-screen">
         <div className="max-w-3xl text-white animate-fade-in">
           {/* Location Badge */}
-          <Badge className="mb-6 bg-tropical-green/90 text-white border-none hover:bg-tropical-green text-sm py-2 px-4">
+          <Badge className="mb-6 bg-ocean-blue/90 text-white border-none hover:bg-ocean-blue text-sm py-2 px-4">
             <MapPin className="w-4 h-4 mr-2" />
             General Luna, Siargao, Philippines
           </Badge>
@@ -119,7 +128,7 @@ const Hero = () => {
           {/* Main Headlines with Enhanced Text Shadow */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-shadow-lg">
             Salamat Villa
-            <span className="block text-tropical-green-light">Siargao</span>
+            <span className="block text-sunset-orange">Siargao</span>
           </h1>
 
           <h2 className="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed text-shadow">
@@ -133,21 +142,21 @@ const Hero = () => {
           {/* Feature Icons with Surf Elements */}
           <div className="flex flex-wrap gap-6 mb-10">
             <div className="flex items-center text-white/90">
-              <Wifi className="w-5 h-5 mr-2 text-tropical-green-light" />
+              <Wifi className="w-5 h-5 mr-2 text-ocean-blue-light" />
               <span>High-Speed WiFi</span>
             </div>
             <div className="flex items-center text-white/90">
-              <svg className="w-5 h-5 mr-2 text-tropical-green-light" viewBox="0 0 24 24" fill="currentColor">
+              <svg className="w-5 h-5 mr-2 text-sunset-orange" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2C8.5 2 6 4.5 6 8c0 2.5 1.5 4.5 3 6l3 8 3-8c1.5-1.5 3-3.5 3-6 0-3.5-2.5-6-6-6zm0 3c1.5 0 3 1.5 3 3s-1.5 3-3 3-3-1.5-3-3 1.5-3 3-3z"/>
               </svg>
               <span>5min to Cloud 9</span>
             </div>
             <div className="flex items-center text-white/90">
-              <Shield className="w-5 h-5 mr-2 text-tropical-green-light" />
+              <Shield className="w-5 h-5 mr-2 text-ocean-blue-light" />
               <span>24/7 Support</span>
             </div>
             <div className="flex items-center text-white/90">
-              <svg className="w-5 h-5 mr-2 text-tropical-green-light" viewBox="0 0 24 24" fill="currentColor">
+              <svg className="w-5 h-5 mr-2 text-sunset-orange" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2l8 4v6c0 5.5-3.8 10.7-9 12C5.8 22.7 2 17.5 2 12V6l10-4zm0 2.2L4 8v4c0 4.5 3.2 8.9 8 10 4.8-1.1 8-5.5 8-10V8l-8-3.8z"/>
                 <path d="M7 10.5l2.5 2.5L15 7.5"/>
               </svg>
@@ -158,18 +167,18 @@ const Hero = () => {
           {/* Pricing Highlight */}
           <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 mb-8 border border-white/20">
             <div className="flex justify-between items-start mb-2">
-              <div className="text-tropical-green-light text-sm font-semibold">Monthly Stays</div>
-              <div className="text-tropical-green-light text-xs">40% OFF</div>
+              <div className="text-sunset-orange text-sm font-semibold">Monthly Stays</div>
+              <div className="text-sunset-orange text-xs">40% OFF</div>
             </div>
             <div className="text-3xl font-bold">₱28,000<span className="text-lg font-normal text-white/80">/month</span></div>
             <div className="text-white/70 text-sm mt-1">Perfect for digital nomads • Extended stay discounts</div>
             <div className="text-white/60 text-xs mt-2">Daily rates from ₱1,100/night</div>
           </div>
 
-          {/* Social Proof with Surf Theme */}
+          {/* Social Proof with Ocean Theme */}
           <div className="flex items-center gap-4 mb-8 text-white/80 text-sm">
             <div className="flex items-center">
-              <svg className="w-4 h-4 text-tropical-green-light mr-1" viewBox="0 0 24 24" fill="currentColor">
+              <svg className="w-4 h-4 text-ocean-blue-light mr-1" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2l8 4v6c0 5.5-3.8 10.7-9 12C5.8 22.7 2 17.5 2 12V6l10-4z"/>
               </svg>
               <span>New & Welcoming</span>
@@ -184,7 +193,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4">
             <Button 
               size="lg"
-              className="bg-tropical-green hover:bg-accent text-white shadow-tropical text-lg px-8 py-4 border-2 border-tropical-green transition-all duration-300 hover:scale-105"
+              className="bg-ocean-blue hover:bg-ocean-blue-dark text-white shadow-ocean text-lg px-8 py-4 border-2 border-ocean-blue transition-all duration-300 hover:scale-105"
               onClick={() => window.open('https://wa.me/639083339477?text=Hi Ali! I\'m interested in booking a room at Salamat Villa. Can you help me with availability?', '_blank')}
             >
               <MessageCircle className="w-5 h-5 mr-2" />
@@ -203,7 +212,7 @@ const Hero = () => {
 
           {/* Availability Notice with Surf Season */}
           <div className="mt-8 text-white/80 text-sm">
-            <span className="inline-flex items-center bg-gradient-to-r from-sunrise to-tropical-green text-white px-3 py-1 rounded-full mr-2 animate-pulse">
+            <span className="inline-flex items-center bg-gradient-to-r from-sunset-orange to-ocean-blue text-white px-3 py-1 rounded-full mr-2 animate-pulse">
               🏄‍♂️ Available Now
             </span>
             Rooms available August 7th & 15th. Perfect timing for surf season and fewer crowds!

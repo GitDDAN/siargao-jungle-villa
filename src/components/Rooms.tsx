@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import RoomSocialShare from "./RoomSocialShare";
 import { 
   Bed, 
   Bath, 
@@ -165,49 +166,49 @@ const Rooms = () => {
   };
 
   return (
-    <section id="rooms" className="py-20 bg-gradient-to-br from-blue-50 to-green-50">
+    <section id="rooms" className="py-20 bg-gradient-to-br from-sand-beige to-white-foam">
       <div className="container mx-auto px-4">
         {/* Section Header - More Persuasive */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Your Remote Work Paradise
-            <span className="text-green-600 block">in Siargao Awaits</span>
+            <span className="text-ocean-blue block">in Siargao Awaits</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
             Join 75% digital nomads who choose Salamat Villa for the perfect blend of productivity and paradise. 
             Every room designed with dedicated workspace, reliable 100+ Mbps WiFi, and that sweet spot location—close to Cloud 9 surf, away from party noise.
           </p>
           
           {/* Trust Indicators */}
           <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto mb-8">
-            <div className="bg-green-100 border border-green-200 rounded-lg p-4">
+            <div className="bg-ocean-blue/10 border border-ocean-blue/20 rounded-lg p-4">
               <div className="flex items-center justify-center mb-2">
-                <Star className="w-5 h-5 text-green-600 mr-2" />
-                <span className="font-bold text-green-600">4.9/5 Rating</span>
+                <Star className="w-5 h-5 text-ocean-blue mr-2" />
+                <span className="font-bold text-ocean-blue">4.9/5 Rating</span>
               </div>
-              <p className="text-sm text-gray-600">97% guest satisfaction</p>
+              <p className="text-sm text-muted-foreground">97% guest satisfaction</p>
             </div>
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div className="bg-sunset-orange/10 border border-sunset-orange/20 rounded-lg p-4">
               <div className="flex items-center justify-center mb-2">
-                <TrendingUp className="w-5 h-5 text-blue-600 mr-2" />
-                <span className="font-bold text-blue-600">70% Extend Stay</span>
+                <TrendingUp className="w-5 h-5 text-sunset-orange mr-2" />
+                <span className="font-bold text-sunset-orange">70% Extend Stay</span>
               </div>
-              <p className="text-sm text-gray-600">The "Siargao Effect" is real</p>
+              <p className="text-sm text-muted-foreground">The "Siargao Effect" is real</p>
             </div>
-            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+            <div className="bg-ocean-blue-light/20 border border-ocean-blue-light/30 rounded-lg p-4">
               <div className="flex items-center justify-center mb-2">
-                <Users className="w-5 h-5 text-orange-600 mr-2" />
-                <span className="font-bold text-orange-600">Fast Response</span>
+                <Users className="w-5 h-5 text-ocean-blue-dark mr-2" />
+                <span className="font-bold text-ocean-blue-dark">Fast Response</span>
               </div>
-              <p className="text-sm text-gray-600">Write anytime</p>
+              <p className="text-sm text-muted-foreground">Write anytime</p>
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-green-100 to-blue-50 border border-green-200 rounded-xl p-6 max-w-2xl mx-auto">
-            <p className="text-gray-900 font-semibold mb-2">
+          <div className="bg-gradient-to-r from-ocean-blue/10 to-sunset-orange/10 border border-ocean-blue/20 rounded-xl p-6 max-w-2xl mx-auto">
+            <p className="text-foreground font-semibold mb-2">
               🔥 August-September 2025: Peak Surfing Season, Shoulder Season Prices
             </p>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-muted-foreground">
               Book now for optimal waves without peak crowds. Digital nomads book 2-6 weeks ahead for best rooms.
             </p>
           </div>
@@ -221,14 +222,14 @@ const Rooms = () => {
               variant={selectedPeriod === period.key ? "default" : "outline"}
               className={`transition-all duration-200 relative ${
                 selectedPeriod === period.key 
-                  ? "bg-green-600 hover:bg-green-700 text-white" 
-                  : "border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
+                  ? "bg-ocean-blue hover:bg-ocean-blue-dark text-white" 
+                  : "border-ocean-blue text-ocean-blue hover:bg-ocean-blue hover:text-white"
               }`}
               onClick={() => setSelectedPeriod(period.key)}
             >
               {period.label}
               {period.discount && (
-                <Badge className="ml-2 bg-orange-500 text-white text-xs">
+                <Badge className="ml-2 bg-sunset-orange text-white text-xs">
                   {period.discount}
                 </Badge>
               )}
@@ -246,11 +247,11 @@ const Rooms = () => {
               <Card 
                 key={room.id} 
                 className={`relative overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 ${
-                  room.isPopular ? 'border-green-600 border-2' : ''
+                  room.isPopular ? 'border-ocean-blue border-2' : ''
                 }`}
               >
                 {room.isPopular && (
-                  <Badge className="absolute top-4 right-4 z-10 bg-green-600 text-white border-none">
+                  <Badge className="absolute top-4 right-4 z-10 bg-ocean-blue text-white border-none">
                     ⭐ Most Popular
                   </Badge>
                 )}
@@ -265,40 +266,40 @@ const Rooms = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   
                   {/* Available Badge */}
-                  <Badge className="absolute bottom-4 left-4 bg-orange-500 text-white border-none">
+                  <Badge className="absolute bottom-4 left-4 bg-sunset-orange text-white border-none">
                     <Calendar className="w-3 h-3 mr-1" />
                     Available {room.available}
                   </Badge>
 
                   {/* Savings Badge */}
                   {savings && (
-                    <Badge className="absolute top-4 left-4 bg-green-500 text-white border-none font-bold">
+                    <Badge className="absolute top-4 left-4 bg-ocean-blue text-white border-none font-bold">
                       Save {savings}%
                     </Badge>
                   )}
                 </div>
 
-                <CardHeader className="pb-4">
+                  <CardHeader className="pb-4">
                   <div className="mb-4">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-1">{room.title}</h3>
-                    <p className="text-sm text-gray-600 mb-3 font-medium">{room.subtitle}</p>
+                    <h3 className="text-2xl font-bold text-foreground mb-1">{room.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-3 font-medium">{room.subtitle}</p>
                     
                     {/* Enhanced Pricing Display */}
-                    <div className="text-center p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg border border-green-200">
-                      <div className="text-3xl font-bold text-green-600">
+                    <div className="text-center p-4 bg-gradient-to-r from-ocean-blue/10 to-sunset-orange/10 rounded-lg border border-ocean-blue/20">
+                      <div className="text-3xl font-bold text-ocean-blue">
                         {room.pricing[selectedPeriod]}
                       </div>
-                      <div className="text-sm text-gray-600">
+                      <div className="text-sm text-muted-foreground">
                         {currentPeriod?.suffix}
                         {currentPeriod?.minStay}
                       </div>
                       {selectedPeriod === "monthly" && (
-                        <div className="text-xs text-green-600 mt-1 font-semibold">
+                        <div className="text-xs text-ocean-blue mt-1 font-semibold">
                           vs ₱{(parseInt(room.pricing.nightly.replace('₱', '').replace(',', '')) * 30).toLocaleString()} daily rate
                         </div>
                       )}
                       {(selectedPeriod === "weekly" || selectedPeriod === "biweekly" || selectedPeriod === "threeWeeks") && (
-                        <div className="text-xs text-green-600 mt-1 font-semibold">
+                        <div className="text-xs text-ocean-blue mt-1 font-semibold">
                           vs ₱{(parseInt(room.pricing.nightly.replace('₱', '').replace(',', '')) * 
                             (selectedPeriod === "weekly" ? 7 : selectedPeriod === "biweekly" ? 14 : 21)
                           ).toLocaleString()} daily rate
@@ -317,13 +318,13 @@ const Rooms = () => {
                   </div>
 
                   {/* Best For - Enhanced */}
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4">
+                  <div className="bg-sand-beige border border-sand-beige-dark rounded-lg p-3 mb-4">
                     <div className="flex items-start">
-                      <Users className="w-4 h-4 mr-2 text-blue-600 mt-0.5 flex-shrink-0" />
+                      <Users className="w-4 h-4 mr-2 text-ocean-blue mt-0.5 flex-shrink-0" />
                       <div>
-                        <div className="text-xs font-semibold text-blue-800 mb-1">Perfect For:</div>
-                        <div className="text-xs text-blue-700 mb-1">{room.bestFor}</div>
-                        <div className="text-xs text-blue-600 italic">{room.perfectFor}</div>
+                        <div className="text-xs font-semibold text-ocean-blue-dark mb-1">Perfect For:</div>
+                        <div className="text-xs text-muted-foreground mb-1">{room.bestFor}</div>
+                        <div className="text-xs text-ocean-blue italic">{room.perfectFor}</div>
                       </div>
                     </div>
                   </div>
@@ -332,20 +333,20 @@ const Rooms = () => {
                 <CardContent className="pt-0">
                   {/* Key Features Icons - Enhanced */}
                   <div className="grid grid-cols-2 gap-3 mb-6">
-                    <div className="flex items-center text-sm text-gray-600">
-                      <Bed className="w-4 h-4 mr-2 text-green-600" />
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <Bed className="w-4 h-4 mr-2 text-ocean-blue" />
                       <span>Queen Bed</span>
                     </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <Snowflake className="w-4 h-4 mr-2 text-green-600" />
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <Snowflake className="w-4 h-4 mr-2 text-ocean-blue" />
                       <span>AC + Fan</span>
                     </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <Monitor className="w-4 h-4 mr-2 text-green-600" />
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <Monitor className="w-4 h-4 mr-2 text-ocean-blue" />
                       <span>Workspace</span>
                     </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <Wifi className="w-4 h-4 mr-2 text-green-600" />
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <Wifi className="w-4 h-4 mr-2 text-ocean-blue" />
                       <span>100+ Mbps</span>
                     </div>
                   </div>
@@ -353,8 +354,8 @@ const Rooms = () => {
                   {/* Full Features List */}
                   <div className="space-y-2 mb-6">
                     {room.features.map((feature) => (
-                      <div key={feature} className="flex items-center text-sm text-gray-600">
-                        <Check className="w-3 h-3 mr-2 text-green-600 flex-shrink-0" />
+                      <div key={feature} className="flex items-center text-sm text-muted-foreground">
+                        <Check className="w-3 h-3 mr-2 text-ocean-blue flex-shrink-0" />
                         <span>{feature}</span>
                       </div>
                     ))}
@@ -363,23 +364,31 @@ const Rooms = () => {
                   {/* Action Buttons - Enhanced */}
                   <div className="space-y-3">
                     <Button 
-                      className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold"
+                      className="w-full bg-ocean-blue hover:bg-ocean-blue-dark text-white font-semibold"
                       onClick={() => scrollToSection('contact')}
                     >
                       <MessageCircle className="w-4 h-4 mr-2" />
                       Book Now - {room.pricing[selectedPeriod]}
                     </Button>
-                    <Button 
-                      variant="outline" 
-                      className="w-full border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
-                      onClick={() => {
-                        const element = document.getElementById('gallery');
-                        if (element) element.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                    >
-                      <Eye className="w-4 h-4 mr-2" />
-                      See More Photos
-                    </Button>
+                    <div className="flex gap-2">
+                      <Button 
+                        variant="outline" 
+                        className="flex-1 border-ocean-blue text-ocean-blue hover:bg-ocean-blue hover:text-white"
+                        onClick={() => {
+                          const element = document.getElementById('gallery');
+                          if (element) element.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                      >
+                        <Eye className="w-4 h-4 mr-2" />
+                        See Photos
+                      </Button>
+                      <RoomSocialShare 
+                        roomName={room.title}
+                        roomPrice={room.pricing.nightly}
+                        availabilityDate={room.available}
+                        roomImage={room.image}
+                      />
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -389,16 +398,16 @@ const Rooms = () => {
 
         {/* Shared Amenities - Enhanced */}
         <div className="bg-white rounded-2xl p-8 shadow-lg mb-12">
-          <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center">
+          <h3 className="text-2xl font-bold text-foreground mb-2 text-center">
             Why 75% of Our Guests Are Digital Nomads
           </h3>
-          <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
             We've perfected the remote work experience. Reliable infrastructure meets authentic island living.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {sharedAmenities.map((amenity, index) => (
-              <div key={index} className="flex items-center text-gray-600 p-3 rounded-lg hover:bg-green-50 transition-colors">
-                <amenity.icon className="w-4 h-4 mr-3 text-green-600 flex-shrink-0" />
+              <div key={index} className="flex items-center text-muted-foreground p-3 rounded-lg hover:bg-sand-beige transition-colors">
+                <amenity.icon className="w-4 h-4 mr-3 text-ocean-blue flex-shrink-0" />
                 <span className="text-sm">{amenity.text}</span>
               </div>
             ))}

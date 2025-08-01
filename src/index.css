@@ -11,80 +11,81 @@
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
 }
 
-/* Tropical Villa Design System - Inspired by Salamat Villa Siargao */
+/* Ocean Paradise Design System - Crystal Blue Waters & Golden Sand */
 
 @layer base {
   :root {
-    /* Base colors inspired by tropical setting */
-    --background: 48 20% 97%; /* Warm cream/beige background */
-    --foreground: 30 15% 15%; /* Dark brown for text */
+    /* Base colors inspired by ocean paradise */
+    --background: 0 0% 100%; /* Pure white background */
+    --foreground: 210 40% 15%; /* Deep ocean blue for text */
 
-    /* Card colors with warm tones */
-    --card: 45 25% 95%; /* Light warm background */
-    --card-foreground: 30 15% 15%;
+    /* Card colors with ocean tones */
+    --card: 0 0% 100%; /* Pure white cards */
+    --card-foreground: 210 40% 15%;
 
-    --popover: 45 25% 95%;
-    --popover-foreground: 30 15% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 40% 15%;
 
-    /* Primary: Rich earth brown inspired by wooden elements */
-    --primary: 30 35% 25%; /* Rich brown */
-    --primary-foreground: 45 25% 95%;
+    /* Primary: Crystal ocean blue */
+    --primary: 212 100% 50%; /* Bright ocean blue */
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary: Warm sand/bamboo tone */
-    --secondary: 42 25% 85%; /* Light bamboo/sand */
-    --secondary-foreground: 30 35% 25%;
+    /* Secondary: Sandy beige */
+    --secondary: 42 25% 92%; /* Light sandy beige */
+    --secondary-foreground: 210 40% 15%;
 
-    /* Muted: Subtle warm gray */
-    --muted: 40 15% 88%;
-    --muted-foreground: 30 20% 45%;
+    /* Muted: Soft gray-blue */
+    --muted: 210 20% 95%;
+    --muted-foreground: 210 20% 45%;
 
-    /* Accent: Tropical green inspired by jungle */
-    --accent: 140 60% 35%; /* Deep tropical green */
-    --accent-foreground: 45 25% 95%;
+    /* Accent: Sunset orange */
+    --accent: 25 95% 60%; /* Vibrant sunset orange */
+    --accent-foreground: 0 0% 100%;
 
     /* Destructive colors */
     --destructive: 0 75% 55%;
-    --destructive-foreground: 45 25% 95%;
+    --destructive-foreground: 0 0% 100%;
 
-    /* Borders and inputs with warm tones */
-    --border: 40 20% 82%;
-    --input: 40 20% 82%;
-    --ring: 140 60% 35%;
+    /* Borders and inputs with ocean tones */
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 212 100% 50%;
 
-    /* Custom tropical colors */
-    --tropical-green: 140 65% 40%; /* Vibrant jungle green */
-    --tropical-green-light: 140 45% 65%; /* Light green for accents */
-    --warm-wood: 35 45% 35%; /* Rich wood brown */
-    --sand: 45 35% 80%; /* Warm sand tone */
-    --palm: 60 40% 25%; /* Palm frond green-brown */
-    --sunrise: 25 85% 65%; /* Warm orange for highlights */
+    /* Custom ocean paradise colors */
+    --ocean-blue: 212 100% 50%; /* Crystal ocean blue */
+    --ocean-blue-light: 200 100% 85%; /* Light ocean blue */
+    --ocean-blue-dark: 220 100% 35%; /* Deep ocean blue */
+    --sunset-orange: 25 95% 60%; /* Vibrant sunset orange */
+    --sunset-orange-light: 30 90% 75%; /* Light sunset orange */
+    --sand-beige: 42 25% 92%; /* Sandy beige */
+    --sand-beige-dark: 42 20% 85%; /* Darker sandy beige */
+    --palm-green: 140 60% 35%; /* Small palm accent only */
+    --white-foam: 0 0% 98%; /* Ocean foam white */
     
     /* Gradients */
-    --gradient-tropical: linear-gradient(135deg, hsl(var(--tropical-green)), hsl(var(--tropical-green-light)));
-    --gradient-earth: linear-gradient(135deg, hsl(var(--warm-wood)), hsl(var(--sand)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--background)), hsl(var(--sand)));
+    --gradient-ocean: linear-gradient(135deg, hsl(var(--ocean-blue)), hsl(var(--ocean-blue-light)));
+    --gradient-sunset: linear-gradient(135deg, hsl(var(--sunset-orange)), hsl(var(--sunset-orange-light)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--ocean-blue-dark)), hsl(var(--ocean-blue)));
+    --gradient-sand: linear-gradient(135deg, hsl(var(--sand-beige)), hsl(var(--white-foam)));
     
-    /* Shadows with warm tones */
-    --shadow-tropical: 0 10px 30px -5px hsl(var(--tropical-green) / 0.2);
-    --shadow-warm: 0 8px 25px -5px hsl(var(--warm-wood) / 0.15);
+    /* Shadows with ocean tones */
+    --shadow-ocean: 0 10px 30px -5px hsl(var(--ocean-blue) / 0.2);
+    --shadow-sunset: 0 8px 25px -5px hsl(var(--sunset-orange) / 0.15);
     --shadow-soft: 0 4px 15px -3px hsl(var(--muted-foreground) / 0.1);
+    
+    /* Wave animations */
+    --wave-duration: 4s;
+    --wave-amplitude: 20px;
 
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -135,4 +136,34 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Custom keyframes and animations */
+@keyframes wave {
+  0%, 100% { 
+    transform: translateY(0px) scale(1); 
+  }
+  50% { 
+    transform: translateY(-10px) scale(1.02); 
+  }
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  33% { 
+    transform: translateY(-10px) rotate(1deg); 
+  }
+  66% { 
+    transform: translateY(-5px) rotate(-1deg); 
+  }
+}
+
+.animate-wave {
+  animation: wave 4s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }

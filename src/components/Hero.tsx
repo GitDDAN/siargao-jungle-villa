@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Wifi, Bike, Shield, MessageCircle, Star } from "lucide-react";
+import { MapPin, Wifi, Shield, MessageCircle } from "lucide-react";
 
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
@@ -12,7 +12,7 @@ const Hero = () => {
 
   return (
     <section id="hero" className="min-h-screen relative overflow-hidden">
-      {/* Wave Graphics - Left Side */}
+      {/* Wave Graphics - Left Side with Surf Elements */}
       <div className="absolute left-0 top-1/4 opacity-20 pointer-events-none">
         <svg width="200" height="400" viewBox="0 0 200 400" className="text-tropical-green-light">
           <path
@@ -33,7 +33,15 @@ const Hero = () => {
         </svg>
       </div>
 
-      {/* Wave Graphics - Right Side */}
+      {/* Surfboard Graphics - Left Side */}
+      <div className="absolute left-8 top-1/2 opacity-10 pointer-events-none animate-float">
+        <svg width="60" height="200" viewBox="0 0 60 200" className="text-white transform rotate-12">
+          <ellipse cx="30" cy="100" rx="8" ry="95" fill="currentColor" opacity="0.6"/>
+          <ellipse cx="30" cy="100" rx="6" ry="85" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.4"/>
+        </svg>
+      </div>
+
+      {/* Wave Graphics - Right Side with Surf Elements */}
       <div className="absolute right-0 top-1/3 opacity-15 pointer-events-none transform rotate-180">
         <svg width="150" height="300" viewBox="0 0 150 300" className="text-white">
           <path
@@ -49,7 +57,16 @@ const Hero = () => {
         </svg>
       </div>
 
-      {/* Floating Elements */}
+      {/* Palm Tree Silhouette - Right Side */}
+      <div className="absolute right-12 top-20 opacity-8 pointer-events-none">
+        <svg width="80" height="120" viewBox="0 0 80 120" className="text-tropical-green-light">
+          <path d="M35 100 Q38 80 40 60 Q42 40 40 20" stroke="currentColor" strokeWidth="3" fill="none" opacity="0.3"/>
+          <path d="M40 25 Q20 15 10 5 M40 25 Q25 10 15 15 M40 25 Q55 10 65 15 M40 25 Q60 15 70 5" 
+                stroke="currentColor" strokeWidth="2" fill="none" opacity="0.4"/>
+        </svg>
+      </div>
+
+      {/* Floating Elements with Surf Theme */}
       <div className="absolute top-20 right-20 opacity-30 animate-float">
         <div className="w-3 h-3 bg-tropical-green-light rounded-full"></div>
       </div>
@@ -59,12 +76,29 @@ const Hero = () => {
       <div className="absolute bottom-40 right-40 opacity-25 animate-float" style={{animationDelay: '2s'}}>
         <div className="w-4 h-4 bg-tropical-green-light rounded-full"></div>
       </div>
+      
+      {/* Surf Wave Pattern - Bottom */}
+      <div className="absolute bottom-0 left-0 right-0 opacity-10 pointer-events-none">
+        <svg width="100%" height="60" viewBox="0 0 1200 60" className="text-white" preserveAspectRatio="none">
+          <path d="M0 30 Q150 0 300 30 T600 30 T900 30 T1200 30 V60 H0 Z" fill="currentColor" opacity="0.3"/>
+          <path d="M0 40 Q200 15 400 40 T800 40 T1200 40 V60 H0 Z" fill="currentColor" opacity="0.2"/>
+        </svg>
+      </div>
+
+      {/* Coconut Tree Elements */}
+      <div className="absolute top-32 right-32 opacity-12 pointer-events-none animate-float" style={{animationDelay: '3s'}}>
+        <svg width="40" height="60" viewBox="0 0 40 60" className="text-tropical-green-light">
+          <circle cx="20" cy="15" r="3" fill="currentColor" opacity="0.4"/>
+          <circle cx="25" cy="18" r="2.5" fill="currentColor" opacity="0.3"/>
+          <circle cx="15" cy="20" r="2" fill="currentColor" opacity="0.3"/>
+        </svg>
+      </div>
 
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(rgba(30, 35, 25, 0.4), rgba(30, 35, 25, 0.4)), url('/lovable-uploads/6bf9b4eb-9693-4324-b55e-536a8d341f0a.png')`
+          backgroundImage: `linear-gradient(rgba(30, 35, 25, 0.3), rgba(30, 35, 25, 0.5)), url('/lovable-uploads/upscalemedia-transformed (1).png')`
         }}
       />
       
@@ -88,26 +122,31 @@ const Hero = () => {
           </h2>
 
           <p className="text-lg mb-8 text-white/80 max-w-2xl leading-relaxed">
-            Perfect for digital nomads and adventure seekers. High-speed WiFi, spacious rooms with jungle views, and prime location - 5 minutes to Cloud 9, away from party noise.
+            Perfect for digital nomads and surf enthusiasts. High-speed WiFi, spacious rooms with jungle views, and prime location - 5 minutes to Cloud 9 surf break, away from party noise.
           </p>
 
-          {/* Feature Icons */}
+          {/* Feature Icons with Surf Elements */}
           <div className="flex flex-wrap gap-6 mb-10">
             <div className="flex items-center text-white/90">
               <Wifi className="w-5 h-5 mr-2 text-tropical-green-light" />
               <span>High-Speed WiFi</span>
             </div>
             <div className="flex items-center text-white/90">
-              <Bike className="w-5 h-5 mr-2 text-tropical-green-light" />
-              <span>Secure Parking</span>
+              <svg className="w-5 h-5 mr-2 text-tropical-green-light" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C8.5 2 6 4.5 6 8c0 2.5 1.5 4.5 3 6l3 8 3-8c1.5-1.5 3-3.5 3-6 0-3.5-2.5-6-6-6zm0 3c1.5 0 3 1.5 3 3s-1.5 3-3 3-3-1.5-3-3 1.5-3 3-3z"/>
+              </svg>
+              <span>5min to Cloud 9</span>
             </div>
             <div className="flex items-center text-white/90">
               <Shield className="w-5 h-5 mr-2 text-tropical-green-light" />
               <span>24/7 Support</span>
             </div>
             <div className="flex items-center text-white/90">
-              <Star className="w-5 h-5 mr-2 text-tropical-green-light" />
-              <span>Prime Location</span>
+              <svg className="w-5 h-5 mr-2 text-tropical-green-light" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l8 4v6c0 5.5-3.8 10.7-9 12C5.8 22.7 2 17.5 2 12V6l10-4zm0 2.2L4 8v4c0 4.5 3.2 8.9 8 10 4.8-1.1 8-5.5 8-10V8l-8-3.8z"/>
+                <path d="M7 10.5l2.5 2.5L15 7.5"/>
+              </svg>
+              <span>Surf Lessons Next Door</span>
             </div>
           </div>
 
@@ -122,16 +161,18 @@ const Hero = () => {
             <div className="text-white/60 text-xs mt-2">Daily rates from ₱1,100/night</div>
           </div>
 
-          {/* Social Proof */}
+          {/* Social Proof with Surf Theme */}
           <div className="flex items-center gap-4 mb-8 text-white/80 text-sm">
             <div className="flex items-center">
-              <Star className="w-4 h-4 text-yellow-400 fill-current mr-1" />
+              <svg className="w-4 h-4 text-tropical-green-light mr-1" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l8 4v6c0 5.5-3.8 10.7-9 12C5.8 22.7 2 17.5 2 12V6l10-4z"/>
+              </svg>
               <span>New & Welcoming</span>
             </div>
             <div className="w-1 h-1 bg-white/40 rounded-full"></div>
-            <div>Neighbors with Siargao's Famous Surf Family</div>
+            <div>🏄‍♂️ Next to Siargao's Famous Surf Family</div>
             <div className="w-1 h-1 bg-white/40 rounded-full"></div>
-            <div>Surf Lessons Available Next Door</div>
+            <div>🌊 Surf Lessons & Board Rentals Available</div>
           </div>
 
           {/* Action Buttons */}
@@ -154,12 +195,12 @@ const Hero = () => {
             </Button>
           </div>
 
-          {/* Availability Notice */}
+          {/* Availability Notice with Surf Season */}
           <div className="mt-8 text-white/80 text-sm">
             <span className="inline-flex items-center bg-gradient-to-r from-sunrise to-tropical-green text-white px-3 py-1 rounded-full mr-2 animate-pulse">
-              🔥 Available Now
+              🏄‍♂️ Available Now
             </span>
-            Rooms available August 7th & 15th. Perfect for surf season!
+            Rooms available August 7th & 15th. Perfect timing for surf season and fewer crowds!
           </div>
         </div>
       </div>

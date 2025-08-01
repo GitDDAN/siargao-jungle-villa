@@ -400,63 +400,79 @@
 
 /* Tropical Card Hover Effects */
 .card-tropical {
-  @apply bg-white rounded-2xl shadow-soft border border-ocean-blue-light/20;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid hsl(var(--ocean-blue-light) / 0.2);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-tropical:hover {
-  @apply shadow-tropical border-tropical-green/30;
+  box-shadow: var(--shadow-tropical);
+  border-color: hsl(var(--tropical-green) / 0.3);
   transform: translateY(-8px) scale(1.02);
 }
 
 /* Tropical Button Styles */
 .btn-ocean {
-  @apply bg-gradient-to-r from-ocean-blue to-ocean-blue-dark text-white;
-  @apply shadow-ocean hover:shadow-tropical;
-  @apply border-2 border-ocean-blue-light;
+  background: linear-gradient(135deg, hsl(var(--ocean-blue)), hsl(var(--ocean-blue-dark)));
+  color: white;
+  box-shadow: var(--shadow-ocean);
+  border: 2px solid hsl(var(--ocean-blue-light));
   transition: all 0.3s ease;
 }
 
 .btn-ocean:hover {
-  @apply from-ocean-blue-dark to-tropical-green;
+  background: linear-gradient(135deg, hsl(var(--ocean-blue-dark)), hsl(var(--tropical-green)));
+  box-shadow: var(--shadow-tropical);
   transform: translateY(-2px) scale(1.05);
 }
 
 .btn-sunset {
-  @apply bg-gradient-to-r from-sunset-orange to-sunrise text-white;
-  @apply shadow-sunset hover:shadow-warm;
-  @apply border-2 border-sunset-orange-light;
+  background: linear-gradient(135deg, hsl(var(--sunset-orange)), hsl(var(--sunrise)));
+  color: white;
+  box-shadow: var(--shadow-sunset);
+  border: 2px solid hsl(var(--sunset-orange-light));
   transition: all 0.3s ease;
 }
 
 .btn-sunset:hover {
-  @apply from-sunrise to-sunset-orange-light;
+  background: linear-gradient(135deg, hsl(var(--sunrise)), hsl(var(--sunset-orange-light)));
+  box-shadow: var(--shadow-warm);
   transform: translateY(-2px) scale(1.05);
 }
 
 .btn-tropical {
-  @apply bg-gradient-to-r from-tropical-green to-ocean-blue text-white;
-  @apply shadow-tropical hover:shadow-ocean;
-  @apply border-2 border-tropical-green-light;
+  background: linear-gradient(135deg, hsl(var(--tropical-green)), hsl(var(--ocean-blue)));
+  color: white;
+  box-shadow: var(--shadow-tropical);
+  border: 2px solid hsl(var(--tropical-green-light));
   transition: all 0.3s ease;
 }
 
 .btn-tropical:hover {
-  @apply from-ocean-blue to-tropical-green-light;
+  background: linear-gradient(135deg, hsl(var(--ocean-blue)), hsl(var(--tropical-green-light)));
+  box-shadow: var(--shadow-ocean);
   transform: translateY(-2px) scale(1.05);
 }
 
 /* Tropical Navigation */
 .nav-tropical {
-  @apply bg-white/95 backdrop-blur-lg;
-  @apply border-b border-ocean-blue-light/30;
-  @apply shadow-soft;
+  background-color: rgb(255 255 255 / 0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid hsl(var(--ocean-blue-light) / 0.3);
+  box-shadow: var(--shadow-soft);
 }
 
 .nav-link-tropical {
-  @apply text-ocean-blue-dark hover:text-tropical-green;
-  @apply font-medium transition-all duration-300;
+  color: hsl(var(--ocean-blue-dark));
+  font-weight: 500;
+  transition: all 0.3s;
   position: relative;
+}
+
+.nav-link-tropical:hover {
+  color: hsl(var(--tropical-green));
 }
 
 .nav-link-tropical::after {
@@ -477,7 +493,7 @@
 /* Tropical Section Backgrounds */
 .section-ocean {
   background: linear-gradient(135deg, 
-    hsl(var(--ocean-blue-light)/0.1) 0%, 
+    hsl(var(--ocean-blue-light) / 0.1) 0%, 
     hsl(var(--white-foam)) 50%, 
     hsl(var(--sand-beige-light)) 100%
   );
@@ -485,7 +501,7 @@
 
 .section-sunset {
   background: linear-gradient(135deg, 
-    hsl(var(--sunset-orange-light)/0.2) 0%, 
+    hsl(var(--sunset-orange-light) / 0.2) 0%, 
     hsl(var(--sand-beige)) 50%, 
     hsl(var(--white-foam)) 100%
   );
@@ -493,8 +509,8 @@
 
 .section-tropical {
   background: linear-gradient(135deg, 
-    hsl(var(--tropical-green-light)/0.1) 0%, 
-    hsl(var(--ocean-blue-light)/0.1) 50%, 
+    hsl(var(--tropical-green-light) / 0.1) 0%, 
+    hsl(var(--ocean-blue-light) / 0.1) 50%, 
     hsl(var(--white-foam)) 100%
   );
 }
@@ -530,22 +546,27 @@
 
 /* Tropical Form Styles */
 .input-tropical {
-  @apply border-2 border-ocean-blue-light/30 focus:border-tropical-green;
-  @apply bg-white/80 backdrop-blur-sm;
-  @apply rounded-xl px-4 py-3;
-  @apply transition-all duration-300;
+  border: 2px solid hsl(var(--ocean-blue-light) / 0.3);
+  background-color: rgb(255 255 255 / 0.8);
+  backdrop-filter: blur(4px);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s;
 }
 
 .input-tropical:focus {
-  @apply shadow-tropical ring-4 ring-tropical-green/20;
+  border-color: hsl(var(--tropical-green));
+  box-shadow: var(--shadow-tropical), 0 0 0 4px hsl(var(--tropical-green) / 0.2);
   transform: translateY(-1px);
 }
 
 /* Tropical Modal and Dialog */
 .modal-tropical {
-  @apply bg-white/95 backdrop-blur-lg;
-  @apply border border-ocean-blue-light/30;
-  @apply rounded-2xl shadow-tropical;
+  background-color: rgb(255 255 255 / 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid hsl(var(--ocean-blue-light) / 0.3);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-tropical);
 }
 
 /* Responsive Utilities */

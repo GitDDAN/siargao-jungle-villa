@@ -23,6 +23,10 @@ const Navigation = () => {
     { label: "Contact", id: "contact" },
   ];
 
+  const handleSurfSpotsClick = () => {
+    window.open('https://siargaovibes.com/explore/?type=surfing-spots&sort=top-rated', '_blank');
+  };
+
   return (
     <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-md z-50 border-b border-border">
       <div className="container mx-auto px-4 py-4">
@@ -46,6 +50,16 @@ const Navigation = () => {
                 {item.label}
               </button>
             ))}
+            <button
+              onClick={handleSurfSpotsClick}
+              className="text-foreground hover:text-tropical-green transition-colors duration-200 font-medium flex items-center"
+              style={{ fontFamily: 'Pacifico, cursive' }}
+            >
+              Surf Spots
+              <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </button>
           </div>
 
           {/* Contact Actions */}
@@ -75,7 +89,7 @@ const Navigation = () => {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <SheetContent side="right" className="w-[280px] sm:w-[320px] max-w-[90vw]">
               <div className="flex flex-col space-y-6 mt-8">
                 <div className="text-xl font-bold text-tropical-green mb-4">
                   Salamat Villa Siargao
@@ -90,6 +104,17 @@ const Navigation = () => {
                     {item.label}
                   </button>
                 ))}
+                
+                <button
+                  onClick={handleSurfSpotsClick}
+                  className="text-left text-lg text-foreground hover:text-tropical-green transition-colors py-2 flex items-center"
+                  style={{ fontFamily: 'Pacifico, cursive' }}
+                >
+                  Surf Spots
+                  <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </button>
 
                 <div className="border-t pt-6 space-y-3">
                   <Button 

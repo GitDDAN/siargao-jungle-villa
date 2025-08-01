@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Enhanced text shadows for better readability */
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.text-shadow-lg {
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+}
+
 /* Tropical Villa Design System - Inspired by Salamat Villa Siargao */
 
 @layer base {

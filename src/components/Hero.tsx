@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Wifi, Shield, MessageCircle } from "lucide-react";
+import CurrentResidents from "./CurrentResidents";
+import SocialShare from "./SocialShare";
 
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
@@ -94,11 +96,11 @@ const Hero = () => {
         </svg>
       </div>
 
-      {/* Background Image */}
+      {/* Background Image with Enhanced Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(rgba(30, 35, 25, 0.3), rgba(30, 35, 25, 0.5)), url('/lovable-uploads/upscalemedia-transformed (1).png')`
+          backgroundImage: `linear-gradient(rgba(15, 25, 35, 0.6), rgba(30, 35, 25, 0.7)), url('/lovable-uploads/upscalemedia-transformed (1).png')`
         }}
       />
       
@@ -111,17 +113,20 @@ const Hero = () => {
             General Luna, Siargao, Philippines
           </Badge>
 
-          {/* Main Headlines */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          {/* Current Residents */}
+          <CurrentResidents />
+
+          {/* Main Headlines with Enhanced Text Shadow */}
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-shadow-lg">
             Salamat Villa
             <span className="block text-tropical-green-light">Siargao</span>
           </h1>
 
-          <h2 className="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed">
+          <h2 className="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed text-shadow">
             Where Modern Comfort Meets Island Adventure
           </h2>
 
-          <p className="text-lg mb-8 text-white/80 max-w-2xl leading-relaxed">
+          <p className="text-lg mb-8 text-white/80 max-w-2xl leading-relaxed text-shadow">
             Perfect for digital nomads and surf enthusiasts. High-speed WiFi, spacious rooms with jungle views, and prime location - 5 minutes to Cloud 9 surf break, away from party noise.
           </p>
 
@@ -188,11 +193,12 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg"
-              className="bg-white/10 backdrop-blur-sm border-2 border-white text-white hover:bg-white hover:text-tropical-green text-lg px-8 py-4 transition-all duration-300"
+              className="bg-white/10 backdrop-blur-sm border-2 border-white text-white hover:bg-white hover:text-black text-lg px-8 py-4 transition-all duration-300"
               onClick={() => scrollToSection('rooms')}
             >
               View Rooms & Pricing
             </Button>
+            <SocialShare roomName="Rooms" availabilityDate="August 7th & 15th" />
           </div>
 
           {/* Availability Notice with Surf Season */}
